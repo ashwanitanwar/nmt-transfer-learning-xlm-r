@@ -69,7 +69,7 @@ This repository presents the work done during my master's thesis with the title 
 	     - work/systems/xlm-r-fused/bert-nmt/fairseq/tasks/translation.py
 	     - work/systems/xlm-r-fused/bert-nmt/fairseq/models/transformer.py
 	     - work/systems/xlm-r-fused/bert-nmt/fairseq/binarizer.py
-      - Further, we need to change the *start (<s>)* and *end (</s>)* tokens in these files as per the new language model.
+      - Further, we need to change the start `(<s>)` and end `(</s>)` tokens in these files as per the new language model.
 
 ## <a name="4"></a>4. Baseline NMT System
 ## <a name="5"></a>5. XLM-R-fused NMT System
