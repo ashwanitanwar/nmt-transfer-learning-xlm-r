@@ -32,15 +32,45 @@ This repository presents the work done during my master's thesis with the title 
    ### 2.3 Installing Fairseq
    - Clone this repository. Its parent directory will act as the home directory for all the preprocessing, training, and evaluation scripts in this work.  
    - Run the following commands from the home directory. 
-   ```
-   cd 'work/systems/baseline-NMT/fairseq'
-   pip install --editable ./
-   ```
+      ```
+      cd 'work/systems/baseline-NMT/fairseq'
+      pip install --editable ./
+      ```
    - It will install the Baseline-NMT System based on the Fairseq library along with its dependencies. Note that we used multiple versions of the Fairseq systems located at [this location](work/systems/). So, we always used the exact paths of the training and evaluation files to avoid the conflicts.
    ### 2.4 Downloading and Extracting XLM-R
    - Download all the files associated with the XLM-R from the [HuggingFace hub](https://huggingface.co/xlm-roberta-base). Use the option *'List all files in model'* to view and download the files namely *config.json, pytorch_model.bin, sentencepiece.bpe.model,* and *tokenizer.json*.  	
    - Put these files in [this directory](/work/bert/models/pre-trained/xlm-roberta/xlmr.base).
-## <a name="3"></a>3. Preprocessing
+## 3. Preprocessing<a name="3"></a>
+   - Please visit the [Fairseq](https://fairseq.readthedocs.io/en/latest/) and [bert-nmt](https://github.com/bert-nmt/bert-nmt) libraries to get familiar with the basic preprocessing, training, and evaluation steps, as our work is built over them.
+   - We used Mosesdecoder to preprocess the English datasets, but switched to the Indic NLP library for the Indic languages such as Hindi, Gujarati, Bengali, and Marathi.  
+   - We used the Sentencepiece BPE for the word segmentation. When the source and target languages shared substantial characters, we processed the datasets with the joint BPE using [this script](work/scripts/preprocessing/tokenize-bpe-shared.sh). Otherwise, a different [script](work/scripts/preprocessing/tokenize-bpe-seperate.sh) was used.
+   - For the English-Hindi dataset used to demonstrate the working of this work, we used the latter script.
+   - Set the *HOME_DIR* to the parent directory of this repository.
+   - We have already put train, test, and dev files at the *RAW_DATA_DIR*. You can change them with your files with the same naming conventions.
+   - We merged the training data with the massive monolingual datasets to learn better BPE segmentation. Put these datasets at *RAW_MONOLINGUAL_DATA_DIR*. We used massive [OSCAR corpus](https://oscar-corpus.com/) in our work, but for this demo, we just used the same train files.
+   - Switch between the Indic NLP or Moses library based on the languages by commenting out the *clean_norm_tok* function, as shown in the script.   
+   - Run this script which preprocesses all the files and saves at *PREPROCESSED_DATA_DIR*. *tokenized-BPE* directory contains all the intermediate files after normalization, tokenization, etc. as well as all the final BPEd files.
+   - Then, this script binarises the data to be used by Fairseq based systems and saves in the *binary* directory. It uses the Fairseq binariser from the [xlm-r-fused system](/work/systems/xlm-r-fused/bert-nmt/) to binarise the files for the baseline as well as the XLM-R-fused systems. It uses --bert-model-name to access the XLM-R tokenizer to tokenize the source files, as they were also used by the XLM-R component in the XLM-R-fused systems.
+   - (Optional) Note that this system is primarily based upon the XLM-R but we can use other masked language models provided by the Huggingface Transformers library. We need to make some changes as follows:
+      - Download and extract the new language model as mentioned in Step 2.4 
+      - Import the corresponding Tokenizer and Model from the HuggingFace Transformers library in the XLM-R-fused system with the default one as mentioned below:      
+         ```
+         from transformers import XLMRobertaModel
+         BertModel = XLMRobertaModel
+
+         from transformers import XLMRobertaTokenizer
+         BertTokenizer = XLMRobertaTokenizer
+         ``` 
+      - We need to import them in the following files:
+	     - work/systems/xlm-r-fused/bert-nmt/preprocess.py
+	     - work/systems/xlm-r-fused/bert-nmt/interactive.py
+	     - work/systems/xlm-r-fused/bert-nmt/fairseq_cli/preprocess.py
+	     - work/systems/xlm-r-fused/bert-nmt/fairseq_cli/interactive.py
+	     - work/systems/xlm-r-fused/bert-nmt/fairseq/tasks/translation.py
+	     - work/systems/xlm-r-fused/bert-nmt/fairseq/models/transformer.py
+	     - work/systems/xlm-r-fused/bert-nmt/fairseq/binarizer.py
+      - Further, we need to change the *start (<s>)* and *end (</s>)* tokens in these files as per the new language model.
+
 ## <a name="4"></a>4. Baseline NMT System
 ## <a name="5"></a>5. XLM-R-fused NMT System
 ## <a name="6"></a>6. Finetuning XLM-R
