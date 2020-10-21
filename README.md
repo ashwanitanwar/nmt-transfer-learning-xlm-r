@@ -44,14 +44,14 @@ This repository presents the work done during my master's thesis with the title 
    - Please visit the [Fairseq](https://fairseq.readthedocs.io/en/latest/) and [bert-nmt](https://github.com/bert-nmt/bert-nmt) libraries to get familiar with the basic preprocessing, training, and evaluation steps, as our work is built over them.
    - We used Mosesdecoder to preprocess the English datasets, but switched to the Indic NLP library for the Indic languages such as Hindi, Gujarati, Bengali, and Marathi.  
    - We used the Sentencepiece BPE for the word segmentation. When the source and target languages shared substantial characters, we processed the datasets with the joint BPE using [this script](work/scripts/preprocessing/tokenize-bpe-shared.sh). Otherwise, a different [script](work/scripts/preprocessing/tokenize-bpe-seperate.sh) was used.
-   - For the English-Hindi dataset used to demonstrate the working of this work, we used the latter script.
+   - For the English-Hindi dataset used to demonstrate this work, we used the latter script.
    - Set the *HOME_DIR* to the parent directory of this repository.
    - We have already put train, test, and dev files at the *RAW_DATA_DIR*. You can change them with your files with the same naming conventions.
    - We merged the training data with the massive monolingual datasets to learn better BPE segmentation. Put these datasets at *RAW_MONOLINGUAL_DATA_DIR*. We used massive [OSCAR corpus](https://oscar-corpus.com/) in our work, but for this demo, we just used the same train files.
    - Switch between the Indic NLP or Moses library based on the languages by commenting out the *clean_norm_tok* function, as shown in the script.   
-   - Run this script which preprocesses all the files and saves at *PREPROCESSED_DATA_DIR*. *tokenized-BPE* directory contains all the intermediate files after normalization, tokenization, etc. as well as all the final BPEd files.
-   - Then, this script binarises the data to be used by Fairseq based systems and saves in the *binary* directory. It uses the Fairseq binariser from the [xlm-r-fused system](/work/systems/xlm-r-fused/bert-nmt/) to binarise the files for the baseline as well as the XLM-R-fused systems. It uses --bert-model-name to access the XLM-R tokenizer to tokenize the source files, as they were also used by the XLM-R component in the XLM-R-fused systems.
-   - (Optional) Note that this system is primarily based upon the XLM-R but we can use other masked language models provided by the Huggingface Transformers library. We need to make some changes as follows:
+   - Run this script which preprocesses all the files and saves at *PREPROCESSED_DATA_DIR*. *tokenized-BPE* directory contains all the intermediate files after normalization, tokenization, etc., as well as, all the final BPEd files.
+   - Then, this script binarises the data to be used by Fairseq based systems, and saves in the *binary* directory. It uses the Fairseq binariser from the [xlm-r-fused system](/work/systems/xlm-r-fused/bert-nmt/) to binarise the files for the baseline, as well as, the XLM-R-fused systems. It uses *--bert-model-name* to access the XLM-R tokenizer to tokenize the source files, as they were also used by the XLM-R component along with the standard NMT-encoder in the XLM-R-fused systems.
+   - (Optional) Note that this system is primarily based upon the XLM-R, but we can use other masked language models provided by the Huggingface Transformers library. We need to make some changes as follows:
       - Download and extract the new language model as mentioned in Step 2.4 
       - Import the corresponding Tokenizer and Model from the HuggingFace Transformers library in the XLM-R-fused system with the default one as mentioned below:      
          ```
