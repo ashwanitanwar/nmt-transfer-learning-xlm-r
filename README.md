@@ -26,9 +26,9 @@ This repository presents the work done during my master's thesis with the title 
    - [Indic NLP Library](https://github.com/anoopkunchukuttan/indic_nlp_library) >= 0.6
    - [Mosesdecoder](https://github.com/moses-smt/mosesdecoder)
    ### 2.2  Installation in the packages directory
-   - Download, extract, and install Mosesdecoder at this [location](packages/mosesdecoder).
-   - Download, extract, and install the Indic NLP library at this [location](packages/indic-nlp/indic_nlp_library). Also, extract [Indic NLP Resources](https://github.com/anoopkunchukuttan/indic_nlp_resources) at this [location](packages/indic-nlp/indic_nlp_resources). You can skip this step if you are not working with the Indic languages.  
-   - Download, extract, and install the HuggingFace Transformers library at this [location](packages/transformers).
+   - Download, extract, and install Mosesdecoder at [this location](packages/mosesdecoder).
+   - Download, extract, and install the Indic NLP library at [this location](packages/indic-nlp/indic_nlp_library). Also, extract [Indic NLP Resources](https://github.com/anoopkunchukuttan/indic_nlp_resources) at [this location](packages/indic-nlp/indic_nlp_resources). You can skip this step if you are not working with the Indic languages.  
+   - Download, extract, and install the HuggingFace Transformers library at [this location](packages/transformers).
    ### 2.3 Installing Fairseq
    - Clone this repository. Its parent directory will act as the home directory for all the preprocessing, training, and evaluation scripts in this work.  
    - Run the following commands from the home directory. 
@@ -36,7 +36,7 @@ This repository presents the work done during my master's thesis with the title 
    cd 'work/systems/baseline-NMT/fairseq'
    pip install --editable ./
    ```
-   - It will install the Baseline-NMT System based on the Fairseq library along with its dependencies. Note that we used multiple versions of the Fairseq systems located at this [location](work/systems/). So, we always used the exact paths of the training and evaluation files to avoid the conflicts.
+   - It will install the Baseline-NMT System based on the Fairseq library along with its dependencies. Note that we used multiple versions of the Fairseq systems located at [this location](work/systems/). So, we always used the exact paths of the training and evaluation files to avoid the conflicts.
    ### 2.4 Downloading and Extracting XLM-R
    - Download all the files associated with the XLM-R from the [HuggingFace hub](https://huggingface.co/xlm-roberta-base). Use the option *'List all files in model'* to view and download the files namely *config.json, pytorch_model.bin, sentencepiece.bpe.model,* and *tokenizer.json*.  	
    - Put these files in [this directory](/work/bert/models/pre-trained/xlm-roberta/xlmr.base).
