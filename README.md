@@ -14,8 +14,17 @@ This repository presents the work done during my master's thesis with the title 
 9. [Additional Info](#9)
 10. [References](#10)
 
-## <a name="1"></a>1. An Overview of Attention-based Fusion
-## <a name="2"></a>2. Installation
+## 1. An Overview of Attention-based Fusion<a name="1"></a>
+## 2. Installation<a name="2"></a>
+   ### 2.1. Requirements
+   - Python >= 3.5
+   - PyTorch >= 1.5.0
+   - [HuggingFace Transformers](https://github.com/huggingface/transformers) == 2.11.0
+   - Tensorflow == 1.13.1
+   - [Sacrebleu](https://github.com/mjpost/sacrebleu) >= 1.4.10
+   - [Sentencepiece](https://github.com/google/sentencepiece) >= 0.1.91
+   - [Indic NLP Library](https://github.com/anoopkunchukuttan/indic_nlp_library) >= 0.6
+   - [Mosesdecoder](https://github.com/moses-smt/mosesdecoder)
 ## <a name="3"></a>3. Preprocessing
 ## <a name="4"></a>4. Baseline NMT System
 ## <a name="5"></a>5. XLM-R-fused NMT System
