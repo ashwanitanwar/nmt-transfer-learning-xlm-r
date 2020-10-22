@@ -125,16 +125,16 @@ This repository presents the work done during my master's thesis with the title 
    - Similalrly, use [this script](work/scripts/finetune_xlm_r/train-custom-bert-xlm-r_indo-aryan.sh) to create the multilingual variant. It uses the *--task* as *multilingual_masked_lm* which merges the data from different languages.
    - It also resamples it to minimise the impact of data imbalance where larger datasets overpower the smaller ones. Use *--multilang-sampling-alpha* to adjust the sampling ratio. See the original XLM-R paper [[1]](#ref1) for the details. 
    - We saved the checkpoints at regular intervals, and picked the model with the minimum validation loss.
-   ### 6.4 Converting Tensorflow Variant to PyTorch
-   - We need to convert the saved checkpoint (in Tensorflow) to the PyTorch version. 
-   - We assume that you have installed the transformers library in packages directory. Then, use the following command.
+   ### 6.4 Making PyTorch Checkpoint Compatible with HuggingFace Transformers
+   - We need to convert the saved PyTorch checkpoint to a different version compatible with the HuggingFace Transformers library. 
+   - We assume that you have installed the Transformers library in the packages directory. Then, use the following command.
 		```
 		python packages/transformers/src/transformers/convert_roberta_original_pytorch_checkpoint_to_pytorch.py --roberta_checkpoint_path best_ck_dir/ --pytorch_dump_folder_path ./
 		```
-   - Here, *best_ck_dir* contains the Tensorflow version of the finetuned XLM-R checkpoint named as *model.pt*, *dict.txt* and *sentencepiece.bpe.model*. Latter 2 files are the same for both the pre-trained and finetuned models, which can be [accessed here](https://github.com/pytorch/fairseq/tree/master/examples/xlmr). *pytorch_dump_folder_path* refers to the directory where the pytorch version needs to be saved.
+   - Here, *best_ck_dir* contains the finetuned XLM-R checkpoint named as *model.pt*, *dict.txt* and *sentencepiece.bpe.model*. Latter 2 files are the same for both the pre-trained and finetuned models, which can be [accessed here](https://github.com/pytorch/fairseq/tree/master/examples/xlmr). *pytorch_dump_folder_path* refers to the directory where the Transformers compatible PyTorch version needs to be saved.
    - Note that the Transformers library had some issues with the file *convert_roberta_original_pytorch_checkpoint_to_pytorch.py*, which we fixed and added to the the [utils directory](hyperlink). Replace this file and rebuild the library. 
-   - (Optional) Use [HuggingFace Guide](hyperlink) directly to finetune the model without first converting to the Tensorflow variant. We found this approach extremely slow due to poor multi-GPU support provided by them. On the other hand, Fairseq has heavily optimized multi-GPU support, which helped us to finetune the models considerably faster. Read about these issues [here] (hyperlink).
-   - After finetuning, just use the pytorch version to replace the original pre-trained models for training and evaluating the XLM-R-fused systems.
+   - (Optional)We can use the [HuggingFace Guide](hyperlink) directly to finetune the model without using the Fairseq library. We found this approach extremely slow due to poor multi-GPU support provided by the HuggingFace. On the other hand, Fairseq has heavily optimized multi-GPU support, which helped us to finetune the models considerably faster. Read about these issues [here] (hyperlink).
+   - After finetuning, just use the final pytorch version to replace the original pre-trained models for training and evaluating the XLM-R-fused systems.
 ## <a name="7"></a>7. Script Conversion
    - We used some language's script conversion strategies, where we tried to exploit the lexical similarities between the related languages by using a common script. We used the Indic NLP library to convert the same. 
    - As XLM-R-fused system processes the same input sentences in the XLM-R as well as NMT-encoder, we tried different combinations of the scripts for these modules. For example, for the Gujarati-Hindi pair, we passed Gujarati script sentences to the XLM-R module, but Gujarati in the Devanagari script to the NMT-encoder to maximize the lexical overlap with the target language.
