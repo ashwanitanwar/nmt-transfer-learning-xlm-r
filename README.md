@@ -79,11 +79,23 @@ This repository presents the work done during my master's thesis with the title 
    - Our work uses the Transformer architecture: *transformer_iwslt_de_en* as default. The XLM-R-fused systems restore the parameters from the baseline systems, so their architectures should match. You can also use other larger architectures, but you need to give the same underlying architecture for the XLM-R-fused systems as well. Check [this file](work/systems/xlm-r-fused/bert-nmt/fairseq/models/transformer.py) for additional architectures implementing the attention based fusion.
    - It saves the checkpoints at *BASELINE_NMT_CHECKPOINTS_DIR*. 
    ### 4.2 Evaluating baseline NMT system
-   - Evaluate the baseline system with [this script](work/scripts/baseline/eval_inter_baseline.sh)
+   - Evaluate the baseline system with [this script](work/scripts/baseline/eval_inter_baseline.sh).
    - We need to evaluate BPEd test file with the best checkpoint. Use *--remove-bpe=sentencepiece* to remove the BPE segmentation from the output file. 
    - Use either Indic NLP or Moses to detokenize the output file as shown in the script.
    - This script calculates the final BLEU scores using SacreBLEU using the untouched test file of the target language.
 ## <a name="5"></a>5. XLM-R-fused NMT System
+   ### 5.1 Training XLM-R-fused NMT systems
+   - Train the XLM-R-fused systems with [this script](work/scripts/xlm-r-fused/train_xlm_r_fused.sh) which will use the system at [this location](work/systems/xlm-r-fused).
+   - *BERT_NAME* stores the path to the XLM-R variant used with this system. We can use either pre-trained or finetuned variants here.
+   - This script copies the best checkpoint from the baseline system and restores the parameters for the further training with the XLM-R-fused system.
+   - This system was built over an earlier version of Fairseq which did not provide early stopping, so this script saves all the checkpoints for *--max-update* training steps, which are then evaluated later on.
+   - For attention fusion at both the encoder and decoder side, use the *--arch* as *transformer_s2_iwslt_de_en* , while for the decoder-only fusion, use *transformer_iwslt_de_en*. 
+   - Ensure to use a small learning rate, as the parameters are already near the optimum levels.
+   ### 5.2 Evaluating XLM-R-fused NMT systems 
+   - Evaluate the XLM-R-fused systems with [this script](work/scripts/xlm-r-fused/eval_inter_xlm_r_fused.sh), which is similar to the script used for the baseline system.
+   - This script uses a particular checkpoint to compute BLEU score, while [another script](work/scripts/xlm-r-fused/eval_all_checkpoints_xlm_r_fused.sh) extends it to compute the scores for all the checkpoints. 
+   - Like it was mentioned before, there is no early stopping feature with this system. So we saved all the checkpoints after some epochs and evaluated them with a validation set. Then, the best checkpoint can be set using BEST_CHECKPOINT in the former script for the test set evaluation. 
+   - It uses path to two different test files which are used by different components of the XLM-R-fused NMT systems. *TEST_SRC_BPEd* points to the file which is used by the standard NMT-encoder, while *TEST_SRC_RAW* points to the raw source file which is used by the XLM-R component. Raw file is needed by the XLM_R as it uses its own internal tokenization using the tokenizer provided by the Huggingface transformers library. Ensure that *BERT_NAME* points to the corresponding XLM-R variant directory, so that it can access its corresponding Tokenizer.
 ## <a name="6"></a>6. Finetuning XLM-R
 ## <a name="7"></a>7. Script Conversion
 ## <a name="8"></a>8. Syntactic Analysis
