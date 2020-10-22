@@ -127,9 +127,9 @@ This repository presents the work done during my master's thesis with the title 
    ### 6.4 Converting Tensorflow Variant to PyTorch
    - We need to convert the saved checkpoint (in Tensorflow) to the PyTorch version. 
    - We assume that you have installed the transformers library in packages directory. Then, use the following command.
-	```
-	python packages/transformers/src/transformers/convert_roberta_original_pytorch_checkpoint_to_pytorch.py --roberta_checkpoint_path best_ck_dir/ --pytorch_dump_folder_path ./
-	```
+		```
+		python packages/transformers/src/transformers/convert_roberta_original_pytorch_checkpoint_to_pytorch.py --roberta_checkpoint_path best_ck_dir/ --pytorch_dump_folder_path ./
+		```
    - Here, *best_ck_dir* contains the Tensorflow version of the XLM-R checkpoint named as *model.pt*, *dict.txt* and sentencepiece model. Latter 2 files are available [here](Hyperlink). *pytorch_dump_folder_path* refers to the directory where the pytorch version needs to be saved.
    - Note that the Transformers library had some issues with the file *convert_roberta_original_pytorch_checkpoint_to_pytorch.py*, which we fixed and added to the the [utils directory](hyperlink). Replace this file and rebuild the library. 
    - (Optional) Use [HuggingFace Guide](hyperlink) directly to finetune the model without first converting to the Tensorflow variant. We found this approach extremely slow due to poor multi-GPU support provided by them. On the other hand, Fairseq has heavily optimized multi-GPU support, which helped us to finetune the models considerably faster. Read about these issues [here] (hyperlink).
