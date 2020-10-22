@@ -98,7 +98,8 @@ This repository presents the work done during my master's thesis with the title 
    - It uses path to two different test files which are used by different components of the XLM-R-fused NMT systems. *TEST_SRC_BPEd* points to the file which is used by the standard NMT-encoder, while *TEST_SRC_RAW* points to the raw source file which is used by the XLM-R component. Raw file is needed by the XLM_R as it uses its own internal tokenization using the tokenizer provided by the Huggingface transformers library. Ensure that *BERT_NAME* points to the corresponding XLM-R variant directory, so that it can access its corresponding Tokenizer.
 ## <a name="6"></a>6. Finetuning XLM-R
    ### 6.1 Multilingual and Monolingual Variants
-   - We finetuned the XLM-R models to create the multilingual and monolingual variants of the original pre-trained models.    - Indo-Aryan-XLM-R-Base is the multilingual variant, which is created by finetuning XLM-R base with the related languages -- Hindi, Gujarati, Marathi, and Bengali. It exploits their syntactic, morphological, orthographic, and lexical similarities. 
+   - We finetuned the XLM-R models to create the multilingual and monolingual variants of the original pre-trained models.    
+   - Indo-Aryan-XLM-R-Base is the multilingual variant, which is created by finetuning XLM-R base with the related languages -- Hindi, Gujarati, Marathi, and Bengali. It exploits their syntactic, morphological, orthographic, and lexical similarities. 
    - Gujarati-XLM-R-Base and Gujarati-XLM-R-Large are the monolingual variants finetuned with the single Gujarati dataset. Further, Gujarati-Dev-XLM-R-Base is created with the Gujarati language converted to the Devanagari script. These models have been released at the HuggingFace hub which are available [here](hyperlink).
    - We used the Tensorflow variants of the XLM-R available [here](https://github.com/pytorch/fairseq/tree/master/examples/xlmr) as the pre-trained models.  
    ### 6.2 Preparing data
@@ -130,11 +131,18 @@ This repository presents the work done during my master's thesis with the title 
 		```
 		python packages/transformers/src/transformers/convert_roberta_original_pytorch_checkpoint_to_pytorch.py --roberta_checkpoint_path best_ck_dir/ --pytorch_dump_folder_path ./
 		```
-   - Here, *best_ck_dir* contains the Tensorflow version of the XLM-R checkpoint named as *model.pt*, *dict.txt* and sentencepiece model. Latter 2 files are available [here](Hyperlink). *pytorch_dump_folder_path* refers to the directory where the pytorch version needs to be saved.
+   - Here, *best_ck_dir* contains the Tensorflow version of the finetuned XLM-R checkpoint named as *model.pt*, *dict.txt* and *sentencepiece.bpe.model*. Latter 2 files are the same for both the pre-trained and finetuned models, which can be [accessed here](https://github.com/pytorch/fairseq/tree/master/examples/xlmr). *pytorch_dump_folder_path* refers to the directory where the pytorch version needs to be saved.
    - Note that the Transformers library had some issues with the file *convert_roberta_original_pytorch_checkpoint_to_pytorch.py*, which we fixed and added to the the [utils directory](hyperlink). Replace this file and rebuild the library. 
    - (Optional) Use [HuggingFace Guide](hyperlink) directly to finetune the model without first converting to the Tensorflow variant. We found this approach extremely slow due to poor multi-GPU support provided by them. On the other hand, Fairseq has heavily optimized multi-GPU support, which helped us to finetune the models considerably faster. Read about these issues [here] (hyperlink).
    - After finetuning, just use the pytorch version to replace the original pre-trained models for training and evaluating the XLM-R-fused systems.
 ## <a name="7"></a>7. Script Conversion
+   - We used some language's script conversion strategies, where we tried to exploit the lexical similarities between the related languages by using a common script. We used the Indic NLP library to convert the same. 
+   - As XLM-R-fused system processes the same input sentences in the XLM-R as well as NMT-encoder, we tried different combinations of the scripts for these modules. For example, for the Gujarati-Hindi pair, we passed Gujarati script sentences to the XLM-R module, but Gujarati in the Devanagari script to the NMT-encoder to maximize the lexical overlap with the target language.
+   - The sentences in the different scripts have the same semantic meaning, so their attention based fusion was possible. Check the thesis for more details. 
+   - This functionality can be used with the XLM-R-fused system by changing the source files to be binarsied for the XLM-R. It can be done by using [this script](work/scripts/preprocessing/script-conversion/tokenize-bpe-seperate-only-xlm-r.sh), which converts these files to the target script. 
+   - Similarly, [the script](work/scripts/preprocessing/script-conversion/tokenize-bpe-both-flow.sh) can be used to convert the script of the source files to be passed to the XLM-R, as well as, the standard NMT-encoder.
+   - Then, train the baseline and XLM-R-fused NMT systems as before using the initial training scripts.
+   - Evaluate these systems as before using the initial evaluation scripts. If the target language is converted to the source language's script, then it needs to be converted back to its intial script as a postprocessing step. This can be done by using the evaluation scripts present in the *script-converted* directory inside the [baseline](work/scripts/baseline) and [xlm-r-fused](work/scripts/xlm-r-fused) systems' scripts' directories.  
 ## <a name="8"></a>8. Syntactic Analysis
 ## <a name="9"></a>9. Additional Info
 ## <a name="10"></a>10. References
