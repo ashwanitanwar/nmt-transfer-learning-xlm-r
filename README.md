@@ -73,7 +73,7 @@ This repository presents the work done during my master's thesis with the title 
 
 ## <a name="4"></a>4. Baseline NMT System
    ### 4.1 Training baseline NMT system
-   - Train the baseline system with [this script](work/scripts/baseline/train_baseline.sh).
+   - Train the Transformer based baseline system with [this script](work/scripts/baseline/train_baseline.sh).
    - It will accumulate the gradients to form a larger effective batch size. Batch size = (number of GPUs) * (*--max-tokens*) * (*--update-freq*).
    - It uses an early stopping validation strategy with *--patience* determining the maximum number of checkpoints with declining BLEU scores.
    - Our work uses the Transformer architecture: *transformer_iwslt_de_en* as default. The XLM-R-fused systems restore the parameters from the baseline systems, so their architectures should match. You can also use other larger architectures, but you need to give the same underlying architecture for the XLM-R-fused systems as well. Check [this file](work/systems/xlm-r-fused/bert-nmt/fairseq/models/transformer.py) for additional architectures implementing the attention based fusion.
