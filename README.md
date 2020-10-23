@@ -147,7 +147,7 @@ This repository presents the work done during my master's thesis with the title 
 Please get familiar with the work of [[3]](#ref3), whose code is available [here](https://github.com/clarkkev/attention-analysis). Our work extends it to trace the transfer of the syntactic knowledge in XLM-R-fused systems.
    ### 8.1 Preparing data
    - Processing the Universal Dependenices (UD) dataset
-     - We used the Hindi UD dataset for the syntactic analysis.
+     - We used the [Hindi UD dataset](https://universaldependencies.org/treebanks/hi_hdtb/index.html) for the syntactic analysis.
      - Use this [script](prepare_dep_parse_json.py) to process the raw UD train and test files. It will extract the syntactic head and corresponding syntactic relations from the UD files.  
      - Then, use this script(preprocess_depparse.py) to convert the above files to the json format using the instructions [here](https://github.com/clarkkev/attention-analysis).
      - Finally, extract the raw sentences from the above files using [this script](prepare_raw_files.py).
@@ -163,6 +163,7 @@ Please get familiar with the work of [[3]](#ref3), whose code is available [here
   - Use [this script](work/scripts/syntactic-analysis/extract_attention_and_save_pkl.sh) to further process the attention maps.
   - It creates the pickle objects using the attention maps and the JSON files.  
   - Then, it converts the attention maps for the BPE level tokens to the word level. Check the thesis for more details.
+  - For testing our code, you can use our pickle files for both the baseline and XLM-R-fused systems which are available [here](https://drive.google.com/file/d/1ggb3F5cSefb2OpLbR-el6JgNl_A2CmX_/view?usp=sharing). Download and extract the compressed file at [this location](work/syntactic_analysis/attention-analysis/data/processed/hi/). These pickle files will work with the Hindi UD preprocessed data already present at the mentioned location.
   ### 8.3 Visualising Attention Maps and Attention based Probing Classifier
   - Run syntactic analysis notebook available [here](Syntax_Analysis.ipynb). Point *train_path* and *dev_path* to the above train and test pickle files. Here, our dev and test files are same, as we do not use any hyperparamter. 
   - The weights obtained from the baseline and XLM-R-fused systems were used to determine the correct syntactic head in different layers and attention heads.
