@@ -146,7 +146,7 @@ This repository presents the work done during my master's thesis with the title 
 ## <a name="8"></a>8. Syntactic Analysis
 Please get familiar with the work of [[3]](#ref3), whose code is available [here](https://github.com/clarkkev/attention-analysis). Our work extends it to trace the transfer of the syntactic knowledge in XLM-R-fused systems.
    ### 8.1 Preparing data
-   - Processing the Universal Dependenices (UD) dataset
+   - Processing the Universal Dependencies (UD) dataset
      - We used the [Hindi UD dataset](https://universaldependencies.org/treebanks/hi_hdtb/index.html) for the syntactic analysis.
      - Use this [script](prepare_dep_parse_json.py) to process the raw UD train and test files. It will extract the syntactic head and corresponding syntactic relations from the UD files.  
      - Then, use this script(preprocess_depparse.py) to convert the above files to the json format using the instructions [here](https://github.com/clarkkev/attention-analysis).
