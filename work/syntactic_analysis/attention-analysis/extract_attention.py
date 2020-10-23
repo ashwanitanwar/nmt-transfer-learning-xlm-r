@@ -1,5 +1,3 @@
-"""Runs BERT over input data and writes out its attention maps to disk."""
-
 import argparse
 import os
 import numpy as np
@@ -27,14 +25,13 @@ class Example(object):
         text = features["text"]
       else:
         text = " ".join(features["words"])
-      # AT Tokenize it with custom sentencepiece and add </s> at last
+      #Tokenize it with custom sentencepiece and add </s> at last
       stripped_line = text.strip()
       bert_line = '{} {} {}'.format('<s>', stripped_line, '</s>')
       self.bert_tokens = bert_attn_tokenizer.tokenize(bert_line)
       self.self_tokens = self_attn_tokenizer.encode(text, out_type=str)
       self.self_tokens.append('</s>')
     '''
-    # AT I think I dont need below. Comment out these lines
     self.input_ids = tokenizer.convert_tokens_to_ids(self.tokens)
     self.segment_ids = [0] * len(self.tokens)
     self.input_mask = [1] * len(self.tokens)
@@ -91,8 +88,7 @@ def main():
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument(
       "--preprocessed-data-file", required=True,
-      help="Location of preprocessed data (JSON file); see the README for "
-           "expected data format.")
+      help="Location of preprocessed data (JSON file))
   parser.add_argument("--bert-dir", required=True,
                       help="Location of the pre-trained BERT model.")
   parser.add_argument("--cased", default=False, action='store_true',
@@ -126,7 +122,6 @@ def main():
   examples = []
   for features in utils.load_json(args.preprocessed_data_file):
     example = Example(features, bert_attn_tokenizer, self_attn_tokenizer, args.max_sequence_length)
-    # AT this check can be done directly with BPE tokens
     #if len(example.input_ids) <= args.max_sequence_length:
     examples.append(example)
   '''

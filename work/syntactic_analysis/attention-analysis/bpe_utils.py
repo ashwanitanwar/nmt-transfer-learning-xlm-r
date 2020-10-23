@@ -12,7 +12,7 @@ def tokenize_and_align(tokenizer, words, args, bert_or_self, pre_tokenized_words
   """Given already-tokenized text (as a list of strings), returns a list of
   lists where each sub-list contains BERT-tokenized tokens for the
   correponding word."""
-  # At just </s> here
+  # just </s> here
   if(bert_or_self=='bert'):
     words = ["<s>"] + words + ["</s>"]
     #basic_tokenizer = tokenizer.basic_tokenizer
@@ -21,7 +21,7 @@ def tokenize_and_align(tokenizer, words, args, bert_or_self, pre_tokenized_words
 
   tokenized_words = []
   for word in words:
-    if word == "<s>" or word == "</s>": # AT just directly put </s> here. Just tokenize directly with sentencepiece
+    if word == "<s>" or word == "</s>": 
       word_toks = [word]
     else:
       if (bert_or_self=='bert'):
@@ -39,7 +39,8 @@ def tokenize_and_align(tokenizer, words, args, bert_or_self, pre_tokenized_words
 
     tokenized_word = word_toks
     #for word_tok in word_toks:
-    #  tokenized_word += tokenizer.wordpiece_tokenizer.tokenize(word_tok) # AT directly tokenize here with sentencepiece
+    #  tokenized_word += tokenizer.wordpiece_tokenizer.tokenize(word_tok) 
+    #  directly tokenize here with sentencepiece
     tokenized_words.append(tokenized_word)
 
   i = 0
@@ -90,12 +91,12 @@ def get_word_word_attention(token_token_attention, self_words_to_tokens, bert_wo
 
   # sum up the attentions for all tokens in a word that has been split
   if (args.bert_attn):
-    for word in bert_words_to_tokens: # AT this list should use BERT
+    for word in bert_words_to_tokens: # this list should use BERT
       #print('word:',word, 'bert_words_to_tokens:',len(bert_words_to_tokens), 'word_word_attention:',word_word_attention.shape )
       word_word_attention[:, word[0]] = word_word_attention[:, word].sum(axis=-1)
     word_word_attention = np.delete(word_word_attention, not_word_starts_bert, -1)
   else:
-    for word in self_words_to_tokens: # AT this list should use BERT
+    for word in self_words_to_tokens: # this list should use BERT
       word_word_attention[:, word[0]] = word_word_attention[:, word].sum(axis=-1)
     word_word_attention = np.delete(word_word_attention, not_word_starts_self, -1)
 
@@ -109,7 +110,7 @@ def get_word_word_attention(token_token_attention, self_words_to_tokens, bert_wo
     #print('Sum for index after merging:' + str(index + 1) + ':' + str(attn_weights_sum))
 
     # several options for combining attention maps for words that have been split
-  # we use "mean" in the paper # AT use satandaraa flow here. It just averags across the rows.
+  # we use "mean" in the paper. It just averages across the rows.
   for word in self_words_to_tokens:
     if mode == "first":
       pass
