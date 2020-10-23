@@ -144,6 +144,31 @@ This repository presents the work done during my master's thesis with the title 
    - Then, train the baseline and XLM-R-fused NMT systems as before using the initial training scripts.
    - Evaluate these systems as before using the initial evaluation scripts. If the target language is converted to the source language's script, then it needs to be converted back to its intial script as a postprocessing step. This can be done by using the evaluation scripts present in the *script-converted* directory inside the [baseline](work/scripts/baseline) and [xlm-r-fused](work/scripts/xlm-r-fused) systems' scripts' directories.  
 ## <a name="8"></a>8. Syntactic Analysis
+Please get familiar with the work of [[3]](#ref3), whose code is available [here](https://github.com/clarkkev/attention-analysis). Our work extends it to trace the transfer of the syntactic knowledge in XLM-R-fused systems.
+   ### 8.1 Preparing data
+   - Processing the Universal Dependenices (UD) dataset
+     - We used the Hindi UD dataset for the syntactic analysis.
+     - Use this [script](prepare_dep_parse_json.py) to process the raw UD train and test files. It will extract the syntactic head and corresponding syntactic relations from the UD files.  
+     - Then, use this script(preprocess_depparse.py) to convert the above files to the json format using the instructions [here](https://github.com/clarkkev/attention-analysis).
+     - Finally, extract the raw sentences from the above files using [this script](prepare_raw_files.py).
+   - Processing source files for Fairseq inference
+     - Use the above files with the raw sentences as the source test files. We evaluate our best baseline and XLM-R-fused system checkpoints with this test file.
+     - Preprocess these files as mentioned in Step 3 (Preprocessing) and prepare the binarised files for the Fairseq. As we do not have any target side data here, we use a [modified preprocessing script](work/scripts/syntactic-analysis/tokenize-bpe-syntactic.sh) to process only the source side files.  
+   ### 8.2 Extracting Attention Maps from Baseline and XLM-R-fused Systems 
+   - Use the above binarsied data to extract the attention maps from the XLM-R-fused system using the [evaluation script](work/scripts/syntactic-analysis/eval_inter_bert_fused_xlm_r_syntax.sh). Similarly, use [this script](eval_inter_baseline_syntactic.sh ***Add this script with modifying the systems***) to extract the maps from the baseline system.
+   - These scripts use two different systems built over the baseline NMT system and XLM-R-fused NMT system, which can be accessed [here](work/systems/baseline-NMT-extract-attn/fairseq/) and [here](work/systems/xlm-r-fused-extract-attn/bert-nmt/), respectively.
+   - These systems extract the self-attention maps for all the attention heads present in all the Transformer encoder layers. Further, the system built over the XLM-R-fused also extracts the bert-attention maps resulting from the attention-based fusion of the XLM-R representations and the NMT-encoder representations. 
+   - Use the additional paramter *--save_attn_maps* to give the path to save the attention maps. Create the folders -- *self*, *bert*, and *batch_sentences* inside it to store the respective maps. *batch_sentences* stores the corresponding sentences in the order attention maps are extracted. This file can be used to verify the order of the sentences processed. 
+  - These maps will be saved in the numpy arrays where a single file contains the number of sentences same as the batch size.
+  - Use [this script](work/scripts/syntactic-analysis/extract_attention_and_save_pkl.sh) to further process the attention maps.
+  - It creates the pickle objects using the attention maps and the JSON files.  
+  - Then, it converts the attention maps for the BPE level tokens to the word level. Check the thesis for more details.
+  ### 8.3 Visualising Attention Maps and Attention based Probing Classifier
+  - Run syntactic analysis notebook available [here](Syntax_Analysis.ipynb). Point *train_path* and *dev_path* to the above train and test pickle files. Here, our dev and test files are same, as we do not use any hyperparamter. 
+  - The weights obtained from the baseline and XLM-R-fused systems were used to determine the correct syntactic head in different layers and attention heads.
+  - It has some qualitative examples where a syntactic head was successfully predicted. 
+  - Finally, it gives a final UAS score by training and evaluating the attention based probing classifier. It takes a weighted combination of the self-attention weights given by all the layers and
+attention heads to give an overall measure of the syntactic knowledge.
 ## <a name="9"></a>9. Additional Info
 ## <a name="10"></a>10. References
 <a id="ref1">[1]</a> [Conneau, Alexis, et al. "Unsupervised Cross-Lingual Representation Learning At Scale." arXiv preprint arXiv:1911.02116 (2019)](https://arxiv.org/pdf/1911.02116.pdf)
