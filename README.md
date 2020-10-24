@@ -153,7 +153,7 @@ This repository presents the work done during my master's thesis with the title 
 Please get familiar with the work of [[3]](#ref3), whose code is available [here](https://github.com/clarkkev/attention-analysis). Our work extends it to trace the transfer of the syntactic knowledge in XLM-R-fused systems.
    ### 8.1 Preparing data
    - Processing the Universal Dependencies (UD) dataset
-     - We used the [Hindi UD dataset](https://universaldependencies.org/treebanks/hi_hdtb/index.html) for the syntactic analysis.
+     - We used the [Hindi UD dataset](https://universaldependencies.org/treebanks/hi_hdtb/index.html) [[5]](#ref5) [[6]](#ref6) for the syntactic analysis.
      - Use this [script](work/syntactic_analysis/attention-analysis/prepare_dep_parse_json.py) to process the raw UD train and test files. It will extract the syntactic head and corresponding syntactic relations from the UD files.  
      - Then, use this [script](work/syntactic_analysis/attention-analysis/preprocess_depparse.py) to convert the above files to the json format using the instructions [here](https://github.com/clarkkev/attention-analysis).
      - Finally, extract the raw sentences from the above files using [this script](work/syntactic_analysis/attention-analysis/prepare_raw_files.py).
@@ -185,3 +185,7 @@ attention heads to give an overall measure of the syntactic knowledge.
 <a id="ref3">[3]</a> [Clark, K., Khandelwal, U., Levy, O., & Manning, C. D. (2019, August). What Does BERT Look at? An Analysis of BERT’s Attention. In Proceedings of the 2019 ACL Workshop BlackboxNLP: Analyzing and Interpreting Neural Networks for NLP (pp. 276-286).](https://www.aclweb.org/anthology/W19-4828.pdf)
 
 <a id="ref4">[4]</a> [Anoop Kunchukuttan, Pratik Mehta, Pushpak Bhattacharyya. The IIT Bombay English-Hindi Parallel Corpus. Language Resources and Evaluation Conference. 2018. ](http://www.cfilt.iitb.ac.in/iitb_parallel/lrec2018_iitbparallel.pdf)
+
+<a id="ref5">[5]</a>[Riyaz Ahmad Bhat, Rajesh Bhatt, Annahita Farudi, Prescott Klassen, Bhuvana Narasimhan, Martha Palmer, Owen Rambow, Dipti Misra Sharma, Ashwini Vaidya, Sri Ramagurumurthy Vishnu, and Fei Xia. The Hindi/Urdu Treebank Project. In the Handbook of Linguistic Annotation (edited by Nancy Ide and James Pustejovsky), Springer Press. 2015.](https://www.springer.com/us/book/9789402408799)
+
+<a id="ref6">[6]</a>[Martha Palmer, Rajesh Bhatt, Bhuvana Narasimhan, Owen Rambow, Dipti Misra Sharma, Fei Xia. Hindi Syntax: Annotating Dependency, Lexical Predicate-Argument Structure, and Phrase Structure. In the Proceedings of the 7th International Conference on Natural Language Processing, ICON-2009, Hyderabad, India, Dec 14-17, 2009.](http://faculty.washington.edu/fxia/mpapers/2009/ICON2009.pdf)
