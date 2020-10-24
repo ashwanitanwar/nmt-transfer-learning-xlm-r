@@ -1,5 +1,3 @@
-***To be updated***
-
 This repository presents the work done during my master's thesis with the title **"Improving Low-Resource Neural Machine Translation of Related Languages by Transfer Learning"** advised by [Alexandra Birch](https://homepages.inf.ed.ac.uk/abmayne/) and [Rachel Bawden](https://rbawden.github.io/) at The University of Edinburgh. It was submitted in August 2020. It investigated some of the Transfer Learning approaches for the Neural Machine Translation (NMT) systems by utilising the masked language models such as XLM-RoBERTa (XLM-R) [[1]](#ref1). This project was primarily built over the attention based fusion of the contextualised word representations from the masked language models (MLM) with the Transformer based NMT system [[2]](#ref2). It also empirically traced the transfer of the syntactic knowledge by an analysis of the attention heads in this system based on the work of Reference [[3]](#ref3). This guide gives the necessary installation instructions along with a small working example using a small subset of the English-Hindi parallel dataset [[4]](#ref4). All the hyperparameters used in this work can be accessed from the thesis.
 
 ## Table of Contents
@@ -177,6 +175,8 @@ Please get familiar with the work of [[3]](#ref3), whose code is available [here
   - Finally, it gives a final UAS score by training and evaluating the attention based probing classifier. It takes a weighted combination of the self-attention weights given by all the layers and
 attention heads to give an overall measure of the syntactic knowledge.
 ## <a name="9"></a>9. Additional Info
+- Licenses: Please note that our work is licensed under MIT License. But, we use some other works and datasets which have their own licenses. Specifically, all the systems which are based on the Fairseq library have their corresponding licenses present in their respective directories. Further, please check the licenses for the English-Hindi IIT Bombay parallel dataset and Hindi Universal Dependencies dataset by using the given links in the Readme file. Similarly, check the license for the HuggingFace Transformers library for a file in 'work/utils' directory mentioned in Readme.  
+- Raise an issue if you need any help. If you find this work useful, feel free to use it and please cite my thesis as well.
 ## <a name="10"></a>10. References
 <a id="ref1">[1]</a> [Conneau, Alexis, et al. "Unsupervised Cross-Lingual Representation Learning At Scale." arXiv preprint arXiv:1911.02116 (2019)](https://arxiv.org/pdf/1911.02116.pdf)
 
