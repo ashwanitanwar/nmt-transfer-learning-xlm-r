@@ -3,7 +3,7 @@ set -e
 
 export CUDA_VISIBLE_DEVICES=6
 
-HOME_DIR=/fs/bil0/atanwar
+HOME_DIR=/fs/bil0/atanwar/repo/nmt-transfer-learning-xlm-r
 WORK_DIR=$HOME_DIR/work
 PACKAGES_DIR=$HOME_DIR/packages
 
@@ -45,8 +45,8 @@ python $INDIC_NLP_CLI_PARSER tokenize -l $SRC_LNG $INTERMEDIATE_DIR/bert_mono.${
 #segregate into train and test.
 shuf $INTERMEDIATE_DIR/bert_mono.${SRC_LNG}.raw.norm.tok \
   -o $INTERMEDIATE_DIR/bert_mono.${SRC_LNG}.raw.norm.tok.shuf
-sed -n '1,3000p' $INTERMEDIATE_DIR/bert_mono.${SRC_LNG}.raw.norm.tok.shuf > $VAL_FILE
-sed -n '3001,$p' $INTERMEDIATE_DIR/bert_mono.${SRC_LNG}.raw.norm.tok.shuf > $TRAIN_FILE
+sed -n '1,50p' $INTERMEDIATE_DIR/bert_mono.${SRC_LNG}.raw.norm.tok.shuf > $VAL_FILE
+sed -n '51,$p' $INTERMEDIATE_DIR/bert_mono.${SRC_LNG}.raw.norm.tok.shuf > $TRAIN_FILE
 echo Done
 
 #Bert saved models and cache

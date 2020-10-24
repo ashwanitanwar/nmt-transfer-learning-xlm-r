@@ -45,12 +45,12 @@ class Binarizer:
             f.seek(offset)
             # next(f) breaks f.tell(), hence readline() must be used
             line = safe_readline(f)
-            dict = BertTokenizer.from_pretrained("xlm-roberta-large")
+            dict = BertTokenizer.from_pretrained("xlm-roberta-base")
             while line:
                 if end > 0 and f.tell() > end:
                     break
                 if isinstance(dict, BertTokenizer):
-                    print("Tokenizing XLM-R")
+                    #print("Tokenizing XLM-R")
                     line = line.strip()
                     line = '{} {} {}'.format('<s>', line, '</s>')
                     tokenizedline = dict.tokenize(line)

@@ -3,7 +3,7 @@ set -e
 
 export CUDA_VISIBLE_DEVICES=6
 
-HOME_DIR=/fs/bil0/atanwar
+HOME_DIR=/fs/bil0/atanwar/repo/nmt-transfer-learning-xlm-r
 WORK_DIR=$HOME_DIR/work
 PACKAGES_DIR=$HOME_DIR/packages
 
@@ -11,7 +11,7 @@ BERT_DIR=$WORK_DIR/bert
 BERT_DATA_DIR=$BERT_DIR/data
 BERT_MODELS_DIR=$BERT_DIR/models
 
-SRC_LNG=gu
+SRC_LNG=hi
 CUSTOM_BERT_MODEL_NAME_PATH=$BERT_MODELS_DIR/${SRC_LNG}-xlm-r
 CUSTOM_BERT_DATA_DIR=$BERT_DATA_DIR/${SRC_LNG}
 
