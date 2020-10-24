@@ -19,15 +19,18 @@ This repository presents the work done during my master's thesis with the title 
    ### 2.1. Requirements
    - Python >= 3.5
    - PyTorch >= 1.5.0
-   - [HuggingFace Transformers](https://github.com/huggingface/transformers) == 2.11.0
    - Tensorflow == 1.13.1
+   - [HuggingFace Transformers](https://github.com/huggingface/transformers) == 2.11.0
+   - [Matplotlib](https://matplotlib.org/)
+   - [Seaborn](https://seaborn.pydata.org/)
+   - [Scikit-Learn](https://github.com/scikit-learn/scikit-learn)
    - [Sacrebleu](https://github.com/mjpost/sacrebleu) >= 1.4.10
    - [Sentencepiece](https://github.com/google/sentencepiece) >= 0.1.91
    - [Indic NLP Library](https://github.com/anoopkunchukuttan/indic_nlp_library) >= 0.6
    - [Mosesdecoder](https://github.com/moses-smt/mosesdecoder)
    ### 2.2  Installation in the packages directory
    - Download, extract, and install Mosesdecoder at [this location](packages/mosesdecoder).
-   - Download, extract, and install the Indic NLP library at [this location](packages/indic-nlp/indic_nlp_library). Also, extract [Indic NLP Resources](https://github.com/anoopkunchukuttan/indic_nlp_resources) at [this location](packages/indic-nlp/indic_nlp_resources). You can skip this step if you are not working with the Indic languages.  
+   - Download, extract, and install the Indic NLP library at [this location](packages/indic-nlp/indic_nlp_library). Also, extract [Indic NLP Resources](https://github.com/anoopkunchukuttan/indic_nlp_resources) at [this location](packages/indic-nlp/indic_nlp_resources). We can skip this step if we are not working with the Indic languages.  
    - Download, extract, and install the HuggingFace Transformers library at [this location](packages/transformers).
    ### 2.3 Installing Fairseq
    - Clone this repository. Its parent directory will act as the home directory for all the preprocessing, training, and evaluation scripts in this work.  
@@ -76,7 +79,7 @@ This repository presents the work done during my master's thesis with the title 
    - Train the Transformer based baseline system with [this script](work/scripts/baseline/train_baseline.sh).
    - It will accumulate the gradients to form a larger effective batch size. Batch size = (number of GPUs) * (*--max-tokens*) * (*--update-freq*).
    - It uses an early stopping validation strategy with *--patience* determining the maximum number of checkpoints with declining BLEU scores.
-   - Our work uses the Transformer architecture: *transformer_iwslt_de_en* as default. The XLM-R-fused systems restore the parameters from the baseline systems, so their architectures should match. You can also use other larger architectures, but you need to give the same underlying architecture for the XLM-R-fused systems as well. Check [this file](work/systems/xlm-r-fused/bert-nmt/fairseq/models/transformer.py) for additional architectures implementing the attention based fusion.
+   - Our work uses the Transformer architecture: *transformer_iwslt_de_en* as default. The XLM-R-fused systems restore the parameters from the baseline systems, so their architectures should match. We can also use other larger architectures, but we need to give the same underlying architecture for the XLM-R-fused systems as well. Check [this file](work/systems/xlm-r-fused/bert-nmt/fairseq/models/transformer.py) for additional architectures implementing the attention based fusion.
    - It saves the checkpoints at *BASELINE_NMT_CHECKPOINTS_DIR*. 
    ### 4.2 Evaluating baseline NMT system
    - Evaluate the baseline system with [this script](work/scripts/baseline/eval_inter_baseline.sh).
@@ -101,7 +104,7 @@ This repository presents the work done during my master's thesis with the title 
    - We finetuned the XLM-R models to create the multilingual and monolingual variants of the original pre-trained models.    
    - Indo-Aryan-XLM-R-Base is the multilingual variant, which is created by finetuning XLM-R base with the related languages -- Hindi, Gujarati, Marathi, and Bengali. It exploits their syntactic, morphological, orthographic, and lexical similarities. 
    - Gujarati-XLM-R-Base and Gujarati-XLM-R-Large are the monolingual variants finetuned with the single Gujarati dataset. Further, Gujarati-Dev-XLM-R-Base is created with the Gujarati language converted to the Devanagari script. These models have been released at the HuggingFace hub which are available [here](hyperlink).
-   - We used the Tensorflow variants of the XLM-R available [here](https://github.com/pytorch/fairseq/tree/master/examples/xlmr) as the pre-trained models.  
+   - We used the PyTorch variants of the XLM-R available [here](https://github.com/pytorch/fairseq/tree/master/examples/xlmr) as the pre-trained models.  
    ### 6.2 Preparing data
    - We primarily followed [this tutorial](https://github.com/pytorch/fairseq/blob/master/examples/roberta/README.pretraining.md), which we encourage you to visit before proceeding next.
    - Use [this script](work/scripts/finetune_xlm_r/prepare-bert-data-xlm-r.sh) to prepare the data. It prepares the training and validation files for a single monolingual dataset whose path is set using *RAW_MONO_SOURCE*. Then, it is preprocessed using the Indic NLP library, as done for the training files above. 
@@ -115,7 +118,7 @@ This repository presents the work done during my master's thesis with the title 
 		```
       - Replace the model name here
 		```
-		dict = BertTokenizer.from_pretrained("xlm-roberta-large")
+		dict = BertTokenizer.from_pretrained("xlm-roberta-base")
 		```
       - Replace the start and end tokens similar to a suggestion in the Preprocessing.
    - Similarly, prepare the data for other languages if you want to create a multilingual model.	
@@ -132,8 +135,8 @@ This repository presents the work done during my master's thesis with the title 
 		python packages/transformers/src/transformers/convert_roberta_original_pytorch_checkpoint_to_pytorch.py --roberta_checkpoint_path best_ck_dir/ --pytorch_dump_folder_path ./
 		```
    - Here, *best_ck_dir* contains the finetuned XLM-R checkpoint named as *model.pt*, *dict.txt* and *sentencepiece.bpe.model*. Latter 2 files are the same for both the pre-trained and finetuned models, which can be [accessed here](https://github.com/pytorch/fairseq/tree/master/examples/xlmr). *pytorch_dump_folder_path* refers to the directory where the Transformers compatible PyTorch version needs to be saved.
-   - Note that the Transformers library had some issues with the file *convert_roberta_original_pytorch_checkpoint_to_pytorch.py*, which we fixed and added to the the [utils directory](hyperlink). Replace this file and rebuild the library. 
-   - (Optional)We can use the [HuggingFace Guide](hyperlink) directly to finetune the model without using the Fairseq library. We found this approach extremely slow due to poor multi-GPU support provided by the HuggingFace. On the other hand, Fairseq has heavily optimized multi-GPU support, which helped us to finetune the models considerably faster. Read about these issues [here] (hyperlink).
+   - Note that the Transformers library had some issues with the file *convert_roberta_original_pytorch_checkpoint_to_pytorch.py*, which we fixed and added to the the [utils directory](work/utils). Replace this file and rebuild the library. 
+   - (Optional)We can use the HuggingFace guides directly to finetune the model without first using the Fairseq library. We found this approach extremely slow due to poor multi-GPU support provided by the HuggingFace. They implemented multithreading over multiprocessing which causes imbalanced GPU usage. Fairseq implemented their own module to handle this, which is discussed [here](https://github.com/pytorch/fairseq/issues/34).
    - After finetuning, just use the final pytorch version to replace the original pre-trained models for training and evaluating the XLM-R-fused systems.
 ## <a name="7"></a>7. Script Conversion
    - We used some language's script conversion strategies, where we tried to exploit the lexical similarities between the related languages by using a common script. We used the Indic NLP library to convert the same. 
@@ -155,7 +158,7 @@ Please get familiar with the work of [[3]](#ref3), whose code is available [here
      - Use the above files with the raw sentences as the source test files. We evaluate our best baseline and XLM-R-fused system checkpoints with this test file.
      - Preprocess these files as mentioned in Step 3 (Preprocessing) and prepare the binarised files for the Fairseq. As we do not have any target side data here, we use a [modified preprocessing script](work/scripts/syntactic-analysis/tokenize-bpe-syntactic.sh) to process only the source side files.  
    ### 8.2 Extracting Attention Maps from Baseline and XLM-R-fused Systems 
-   - Use the above binarsied data to extract the attention maps from the XLM-R-fused system using the [evaluation script](work/scripts/syntactic-analysis/eval_inter_bert_fused_xlm_r_syntax.sh). Similarly, use [this script](eval_inter_baseline_syntactic.sh ***Add this script with modifying the systems***) to extract the maps from the baseline system.
+   - Use the above binarsied data to extract the attention maps from the XLM-R-fused system using the [evaluation script](work/scripts/syntactic-analysis/eval_inter_bert_fused_xlm_r_syntax.sh). Similarly, use [this script](work/scripts/syntactic-analysis/eval_inter_baseline_syntax.sh) to extract the maps from the baseline system.
    - These scripts use two different systems built over the baseline NMT system and XLM-R-fused NMT system, which can be accessed [here](work/systems/baseline-NMT-extract-attn/fairseq/) and [here](work/systems/xlm-r-fused-extract-attn/bert-nmt/), respectively.
    - These systems extract the self-attention maps for all the attention heads present in all the Transformer encoder layers. Further, the system built over the XLM-R-fused also extracts the bert-attention maps resulting from the attention-based fusion of the XLM-R representations and the NMT-encoder representations. 
    - Use the additional paramter *--save_attn_maps* to give the path to save the attention maps. Create the folders -- *self*, *bert*, and *batch_sentences* inside it to store the respective maps. *batch_sentences* stores the corresponding sentences in the order attention maps are extracted. This file can be used to verify the order of the sentences processed. 
