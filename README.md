@@ -136,7 +136,7 @@ This repository presents the work done during my master's thesis with the title 
 		```
    - Here, *best_ck_dir* contains the finetuned XLM-R checkpoint named as *model.pt*, *dict.txt* and *sentencepiece.bpe.model*. Latter 2 files are the same for both the pre-trained and finetuned models, which can be [accessed here](https://github.com/pytorch/fairseq/tree/master/examples/xlmr). *pytorch_dump_folder_path* refers to the directory where the Transformers compatible PyTorch version needs to be saved.
    - Note that the Transformers library had some issues with the file *convert_roberta_original_pytorch_checkpoint_to_pytorch.py*, which we fixed and added to the the [utils directory](work/utils). Replace this file and rebuild the library. 
-   - (Optional)We can use the HuggingFace guides directly to finetune the model without first using the Fairseq library. We found this approach extremely slow due to poor multi-GPU support provided by the HuggingFace. They implemented multithreading over multiprocessing which causes imbalanced GPU usage. Fairseq implemented their own module to handle this, which is discussed [here](https://github.com/pytorch/fairseq/issues/34).
+   - (Optional) We can use the HuggingFace guides directly to finetune the model without first using the Fairseq library. We found this approach extremely slow due to poor multi-GPU support provided by the HuggingFace. They implemented multithreading over multiprocessing which causes imbalanced GPU usage. Fairseq implemented their own module to handle this, which is discussed [here](https://github.com/pytorch/fairseq/issues/34).
    - After finetuning, just use the final pytorch version to replace the original pre-trained models for training and evaluating the XLM-R-fused systems.
 ## <a name="7"></a>7. Script Conversion
    - We used some language's script conversion strategies, where we tried to exploit the lexical similarities between the related languages by using a common script. We used the Indic NLP library to convert the same. 
@@ -151,9 +151,9 @@ Please get familiar with the work of [[3]](#ref3), whose code is available [here
    ### 8.1 Preparing data
    - Processing the Universal Dependencies (UD) dataset
      - We used the [Hindi UD dataset](https://universaldependencies.org/treebanks/hi_hdtb/index.html) for the syntactic analysis.
-     - Use this [script](prepare_dep_parse_json.py) to process the raw UD train and test files. It will extract the syntactic head and corresponding syntactic relations from the UD files.  
-     - Then, use this script(preprocess_depparse.py) to convert the above files to the json format using the instructions [here](https://github.com/clarkkev/attention-analysis).
-     - Finally, extract the raw sentences from the above files using [this script](prepare_raw_files.py).
+     - Use this [script](work/syntactic_analysis/attention-analysis/prepare_dep_parse_json.py) to process the raw UD train and test files. It will extract the syntactic head and corresponding syntactic relations from the UD files.  
+     - Then, use this [script](work/syntactic_analysis/attention-analysis/preprocess_depparse.py) to convert the above files to the json format using the instructions [here](https://github.com/clarkkev/attention-analysis).
+     - Finally, extract the raw sentences from the above files using [this script](work/syntactic_analysis/attention-analysis/prepare_raw_files.py).
    - Processing source files for Fairseq inference
      - Use the above files with the raw sentences as the source test files. We evaluate our best baseline and XLM-R-fused system checkpoints with this test file.
      - Preprocess these files as mentioned in Step 3 (Preprocessing) and prepare the binarised files for the Fairseq. As we do not have any target side data here, we use a [modified preprocessing script](work/scripts/syntactic-analysis/tokenize-bpe-syntactic.sh) to process only the source side files.  
@@ -168,7 +168,7 @@ Please get familiar with the work of [[3]](#ref3), whose code is available [here
   - Then, it converts the attention maps for the BPE level tokens to the word level. Check the thesis for more details.
   - For testing our code, you can use our pickle files for both the baseline and XLM-R-fused systems which are available [here](https://drive.google.com/file/d/1ggb3F5cSefb2OpLbR-el6JgNl_A2CmX_/view?usp=sharing). Download and extract the compressed file at [this location](work/syntactic_analysis/attention-analysis/data/processed/hi/). These pickle files will work with the Hindi UD preprocessed data already present at the mentioned location.
   ### 8.3 Visualising Attention Maps and Attention based Probing Classifier
-  - Run syntactic analysis notebook available [here](Syntax_Analysis.ipynb). Point *train_path* and *dev_path* to the above train and test pickle files. Here, our dev and test files are same, as we do not use any hyperparamter. 
+  - Run syntactic analysis notebook available [here](work/syntactic_analysis/attention-analysis/Syntax_Analysis.ipynb). Point *train_path* and *dev_path* to the above train and test pickle files. Here, our dev and test files are same, as we do not use any hyperparamter. 
   - The weights obtained from the baseline and XLM-R-fused systems were used to determine the correct syntactic head in different layers and attention heads.
   - It has some qualitative examples where a syntactic head was successfully predicted. 
   - Finally, it gives a final UAS score by training and evaluating the attention based probing classifier. It takes a weighted combination of the self-attention weights given by all the layers and
