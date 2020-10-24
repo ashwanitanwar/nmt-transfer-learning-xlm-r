@@ -1,6 +1,6 @@
 ***To be updated***
 
-This repository presents the work done during my master's thesis with the title **"Improving Low-Resource Neural Machine Translation of Related Languages by Transfer Learning"** advised by [Alexandra Birch](https://homepages.inf.ed.ac.uk/abmayne/) and [Rachel Bawden](https://rbawden.github.io/) at The University of Edinburgh. It was submitted in August 2020. It investigated some of the Transfer Learning approaches for the Neural Machine Translation (NMT) systems by utilising the masked language models such as XLM-RoBERTa [[1]](#ref1). This project was primarily built over the attention based fusion of the contextualisd word representations from the masked language models (MLM) with the Transformer based NMT system [[2]](#ref2). It also empirically traced the transfer of the syntactic knowledge by an analysis of the attention heads in this system based on the work of Reference [[3]](#ref3). This guide gives the necessary installation instructions along with a small working example using a small subset of the English-Hindi parallel dataset [[4]](#ref4). All the hyperparameters used in this work can be accessed from the thesis.
+This repository presents the work done during my master's thesis with the title **"Improving Low-Resource Neural Machine Translation of Related Languages by Transfer Learning"** advised by [Alexandra Birch](https://homepages.inf.ed.ac.uk/abmayne/) and [Rachel Bawden](https://rbawden.github.io/) at The University of Edinburgh. It was submitted in August 2020. It investigated some of the Transfer Learning approaches for the Neural Machine Translation (NMT) systems by utilising the masked language models such as XLM-RoBERTa (XLM-R) [[1]](#ref1). This project was primarily built over the attention based fusion of the contextualised word representations from the masked language models (MLM) with the Transformer based NMT system [[2]](#ref2). It also empirically traced the transfer of the syntactic knowledge by an analysis of the attention heads in this system based on the work of Reference [[3]](#ref3). This guide gives the necessary installation instructions along with a small working example using a small subset of the English-Hindi parallel dataset [[4]](#ref4). All the hyperparameters used in this work can be accessed from the thesis.
 
 ## Table of Contents
 1. [An Overview of Attention-based Fusion](#1) 
@@ -15,6 +15,9 @@ This repository presents the work done during my master's thesis with the title 
 10. [References](#10)
 
 ## 1. An Overview of Attention-based Fusion<a name="1"></a>
+- We connected the XLM-R with the Transformer based NMT system using the attention-based fusion following the work [[2]](#ref2).
+- We call it XLM-R-fused NMT system which consists of an additional XLM-R module other than the standard NMT-encoder and the NMT-decoder.
+- An input sentence is passed to both the XLM-R and the NMT-encoder, which gives two different representations for the sentence. The contextualised word representation from the XLM-R is fused with the NMT-encoder representation using an attention-based fusion. Similarly, the XLM-R representation is fused with the decoder.
 ## 2. Installation<a name="2"></a>
    ### 2.1. Requirements
    - Python >= 3.5
