@@ -9,11 +9,11 @@ set -e
 #Source test file should be tokenized and BPEd so that it can match the vocabulary of the model. Reference file should be detokenized and de-BPEd for explicitly calculating sacreBLEU (without using internal --sacrebleu)
 #removebpe=sentencepiece should only be used if BPE was used with sentencepiece.
 
-SRC_LNG=gu
+SRC_LNG=en
 TGT_LNG=hi
 LANG_PAIR=$SRC_LNG-$TGT_LNG
 
-HOME_DIR=/fs/bil0/atanwar
+HOME_DIR=/fs/bil0/atanwar/repo/nmt-transfer-learning-xlm-r
 WORK_DIR=$HOME_DIR/work
 PACKAGES_DIR=$HOME_DIR/packages
 
@@ -41,7 +41,7 @@ TEST_SRC_BPEd=$TOK_BPE_DATA_DIR/test.bpe.$LANG_PAIR.$SRC_LNG
 
 #Raw data(order of src and tgt should be according to raw data folder)
 RAW_LANG_PAIR=$SRC_LNG-$TGT_LNG
-RAW_DATA_DIR=$WORK_DIR/raw-data/parallel/augmented/$RAW_LANG_PAIR
+RAW_DATA_DIR=$WORK_DIR/raw-data/parallel/original/$RAW_LANG_PAIR
 #TEST_SRC_RAW=$RAW_DATA_DIR/test.$RAW_LANG_PAIR.$SRC_LNG
 TEST_SRC_RAW=$TOK_BPE_DATA_DIR/test.bpe.$LANG_PAIR.bert.$SRC_LNG
 
@@ -53,14 +53,14 @@ BERT_DIR=$WORK_DIR/bert
 CACHE_DIR=$BERT_DIR/cache
 BERT_MODELS_DIR=$BERT_DIR/models
 #BERT_TYPE=gu-xlm-r
-BERT_TYPE=indo-aryan-xlm-r
-#BERT_NAME=$BERT_MODELS_DIR/pre-trained/xlm-roberta/$BERT_TYPE
-BERT_NAME=$BERT_MODELS_DIR/$BERT_TYPE
+BERT_TYPE=xlmr.base
+BERT_NAME=$BERT_MODELS_DIR/pre-trained/xlm-roberta/$BERT_TYPE
+#BERT_NAME=$BERT_MODELS_DIR/$BERT_TYPE
 
 #Bert-fused NMT Checkpoints dir
 BERT_FOLDER=${BERT_TYPE}-fused
 BERT_FUSED_NMT_CHECKPOINTS_DIR=$PREPROCESSED_LANG_PAIR_DIR/$BERT_FOLDER
-BEST_CHECKPOINT=$BERT_FUSED_NMT_CHECKPOINTS_DIR/checkpoint124.pt
+BEST_CHECKPOINT=$BERT_FUSED_NMT_CHECKPOINTS_DIR/checkpoint_last.pt
 
 #Log file
 TGT_LOG=$BEST_CHECKPOINT.inter.log

@@ -1,0 +1,500 @@
+the color and opacity of the highlight fill .
+accerciser
+selected cell
+a list of plugins that are disabled by default
+selected accessible
+info
+path :
+the duration of the highlight box when selecting accessible nodes
+co _ mponent
+des _ ktop
+_ document
+the color and opacity of the highlight border .
+_ help
+key
+available new pluginviews
+mdi - z - order
+inspect last focused accessible
+application
+note : changes only take effect after logout .
+minimum increment
+full name
+too many selectable children
+layer
+content type
+start : % d
+states
+_ refresh registry
+too many selectable children
+manage bookmarks .
+refresh selected node &apos; s children
+border color :
+no view
+description
+name ( x , y )
+the duration of the highlight box when selecting accessible nodes
+the layout for the top panel
+accerciser preferences
+application
+current value
+inspect accessible under mouse
+lo _ gin helper
+clear event log
+name ( x , y )
+give your application an accessibility workout
+minimum value
+content type
+ap _ plication
+component
+size
+_ help
+des _ ktop
+accerciser could not see the applications on your desktop . you must enable desktop accessibility to fix this problem . do you want to enable it now ?
+ldtp
+ipython console
+accerciser copyright © 2006 , 2007 ibm corporation ( bsd )
+ap _ plication
+tests fundamental gui application accessibility
+row
+a list of plugins that are disabled by default
+des _ ktop
+new view ...
+include defaults
+script recorder
+browse the various methods of the current accessible
+focusable % s has table interface , no selection interface
+task
+task
+plugin errors
+alpha
+quick select
+highlight border color
+selected application
+highlight duration
+selected rows
+an interactive python accessibility explorer
+the color and opacity of the highlight fill .
+children
+ldtp
+c _ lear selection
+description
+path
+alt
+hide private attributes
+view
+selected cell
+event monitor
+source
+start
+show
+no view
+event monitor
+accerciser copyright © 2006 , 2007 ibm corporation ( bsd )
+columns
+validating
+add bookmark ...
+view
+clear event log
+confirm clear
+_ new view ...
+summary :
+highlight last event entry
+_ selection
+interactive console for manipulating currently selected accessible
+interface viewer
+script type
+interactive % s is not actionable
+plugin view ( % d )
+_ monitor events
+ctrl
+version
+allows viewing of various interface properties
+locale :
+_ selection
+% s missing name or label
+title :
+maximum value
+% s has % s state without % s state
+the color and opacity of the highlight border .
+description
+give your application an accessibility workout
+co _ mponent
+description
+minimum increment
+( not implemented )
+_ contents
+h _ ypertext
+actionable % s is not focusable or selectable
+_ monitor events
+the fill color of the highlight box
+hyperlink
+dogtail
+( no description )
+name
+locale :
+child count
+widget
+val _ ue
+api browser
+inspect accessible under mouse
+highlighting
+refresh _ node
+_ accessible
+warn
+table information
+selected columns
+select all
+highlighting
+highlight border color
+c _ lear selection
+rows
+start / stop event recording
+alpha
+v _ alidate
+perform action
+show
+perform action
+end
+% s has % s state without % s state
+absolute position
+hyperlink
+% s has no text interface
+source
+select all
+col _ lection
+allows viewing of various interface properties
+size
+table information
+saving
+application :
+_ add bookmark ...
+selected accessible
+toolkit
+source
+widget
+_ refresh registry
+inspect last focused accessible
+absolute position
+_ view
+fill color :
+layer
+position
+hide private attributes
+fill color :
+% ( rolename ) s index % ( num ) d does not match row and column
+the new bsd license see the copying and notice files for details .
+new view ...
+acti _ on
+selected rows
+h _ ypertext
+title
+the new bsd license see the copying and notice files for details .
+the border color of the highlight box
+_ file
+_ bookmarks
+widget
+_ bookmarks
+_ selection
+quick select
+relative position
+property
+component
+shift
+method
+table information
+key
+version
+global hotkeys
+except
+value
+start
+api browser
+everything
+co _ mponent
+_ image
+edit bookmarks ...
+highlight duration
+c _ lear selection
+end
+( not implemented )
+at - spi validator
+te _ xt
+show
+role
+end
+( editable )
+property
+clear event log
+method
+position
+name ( x , y )
+the default plugin layout for the top panel .
+% s has no name or description
+start / stop event recording
+( not implemented )
+_ edit
+% s missing name or label
+unknown
+highlight fill color
+more than one focused widget
+an interactive python accessibility explorer
+saving
+toolkit
+no description
+start / stop event recording
+_ table
+quick select
+the current script will be lost .
+start
+single layout view
+sche _ ma :
+mdi - z - order
+header :
+the color and opacity of the highlight border .
+size
+global hotkeys
+minimum value
+highlight fill color
+id
+missing reciprocal for % s relation
+offset
+h _ ypertext
+start : 0
+highlight duration
+plugin errors
+locale
+value
+% s does not belong to a set
+basic
+v _ alidate
+idle
+% s does not belong to a set
+ap _ plication
+sche _ ma :
+focusable % s has table interface , no selection interface
+except
+columns
+selected application
+edit bookmarks ...
+include defaults
+column
+te _ xt
+uri
+highlight fill color
+refresh all
+full name
+_ single plugins view
+debug
+header :
+_ new view ...
+confirm clear
+0 , 0
+id
+more than one focused widget
+browse the various methods of the current accessible
+_ document
+selected accessible
+offset
+locale
+te _ xt
+% ( rolename ) s parent index % ( num1 ) d does not match row and column index % ( num2 ) d
+highlight duration :
+layer
+the border color of the highlight box
+bottom panel
+id
+interface viewer
+selected columns
+shows events as they occur from selected types and sources
+% ( rolename ) s parent index % ( num1 ) d does not match row and column index % ( num2 ) d
+_ preferences ...
+method
+shift
+the duration of the highlight box when selecting accessible nodes .
+creates dogtail style scripts
+col _ lection
+minimum increment
+locale
+idle
+dogtail
+current value
+acti _ on
+row
+plugins
+header :
+_ table
+selected columns
+border color :
+web site
+plugins
+% s has no text interface
+level
+alt
+the default plugin layout for the top panel
+level
+error
+val _ ue
+column
+the color and opacity of the highlight fill .
+no description
+application :
+_ accessible
+translator - credits
+st _ reamable content
+event monitor
+children
+ipython console
+bottom panel
+extents :
+include defaults
+ctrl
+_ table
+selected cell
+% s has no name or description
+uri
+maximum value
+plugin view ( % d )
+plugin view
+tests fundamental gui application accessibility
+bookmark selected accessible .
+absolute position
+% ( rolename ) s index % ( num ) d does not match row and column
+name
+_ accessible
+plugin with various methods of selecting accessibles quickly .
+top panel
+plugin with various methods of selecting accessibles quickly .
+actionable % s is not focusable or selectable
+col _ lection
+_ file
+_ image
+_ preferences ...
+description
+plugin with various methods of selecting accessibles quickly .
+a list of plugins that are disabled by default
+acti _ on
+the default plugin layout for the top panel
+version
+native
+lo _ gin helper
+the default plugin layout for the bottom panel
+_ image
+allows viewing of various interface properties
+at - spi validator
+% s index in parent does not match child index
+( no description )
+event monitor
+accerciser accessibility explorer
+relative position
+event monitor
+_ add bookmark ...
+path
+accerciser preferences
+creates dogtail style scripts
+lo _ gin helper
+error
+hide private attributes
+everything
+sche _ ma :
+property
+basic
+val _ ue
+mdi - z - order
+0 , 0
+the current script will be lost .
+current value
+key binding
+highlight last event entry
+validates application accessibility
+the default plugin layout for the bottom panel
+bookmark selected accessible .
+_ view
+row
+value
+accerciser accessibility explorer
+uri
+rows
+translator - credits
+script type
+st _ reamable content
+plugin view
+_ edit bookmarks ...
+alpha
+highlight border color
+the layout for the bottom panel
+a list of plugins that are disabled by default .
+attributes
+accerciser could not see the applications on your desktop . you must enable desktop accessibility to fix this problem . do you want to enable it now ?
+the layout for the top panel pluginview .
+column
+give your application an accessibility workout
+perform action
+warn
+everything
+validates application accessibility
+end : 0
+refresh selected node &apos; s children
+0 , 0
+name
+accerciser accessibility explorer
+extents :
+inspect accessible under mouse
+% s index in parent does not match child index
+locale :
+offset
+_ contents
+api browser
+shows events as they occur from selected types and sources
+position
+_ edit
+script recorder
+refresh _ node
+select all
+missing reciprocal for % s relation
+browse the various methods of the current accessible
+add bookmark ...
+interactive % s is not actionable
+rows
+inspect last focused accessible
+interactive console for manipulating currently selected accessible
+too many selectable children
+the layout for the bottom panel pluginview .
+toolkit
+columns
+manage bookmarks .
+maximum value
+relations
+extents :
+ipython console
+title
+validating
+caption :
+v _ alidate
+native
+info
+interface viewer
+the fill color of the highlight box
+path :
+_ edit bookmarks ...
+selected rows
+refresh all
+_ single plugins view
+selected application
+relative position
+shows events as they occur from selected types and sources
+interactive console for manipulating currently selected accessible
+role
+st _ reamable content
+web site
+top panel
+key binding
+note : changes only take effect after logout .
+title :
+hyperlink
+debug
+highlight last event entry
+minimum value
+_ monitor events
+event monitor
+highlight duration :
+_ document

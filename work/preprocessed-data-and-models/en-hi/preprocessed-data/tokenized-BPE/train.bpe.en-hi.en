@@ -1,0 +1,500 @@
+▁give ▁your ▁application ▁an ▁accessibility ▁workout
+▁accerciser ▁accessibility ▁explorer
+▁the ▁default ▁plugin ▁layout ▁for ▁the ▁bottom ▁panel
+▁the ▁default ▁plugin ▁layout ▁for ▁the ▁top ▁panel
+▁a ▁list ▁of ▁plugins ▁that ▁are ▁disabled ▁by ▁default
+▁highlight ▁duration
+▁the ▁duration ▁of ▁the ▁highlight ▁box ▁when ▁selecting ▁accessible ▁nodes
+▁highlight ▁border ▁color
+▁the ▁color ▁and ▁opacity ▁of ▁the ▁highlight ▁border ▁.
+▁highlight ▁fill ▁color
+▁the ▁color ▁and ▁opacity ▁of ▁the ▁highlight ▁fill ▁.
+▁api ▁browser
+▁browse ▁the ▁various ▁methods ▁of ▁the ▁current ▁accessible
+▁hide ▁private ▁attributes
+▁method
+▁property
+▁value
+▁ipython ▁console
+▁interactive ▁console ▁for ▁manipulating ▁currently ▁selected ▁accessible
+▁event ▁monitor
+▁_ ▁monitor ▁events
+▁c ▁_ ▁lear ▁selection
+▁everything
+▁selected ▁application
+▁selected ▁accessible
+▁source
+▁event ▁monitor
+▁shows ▁events ▁as ▁they ▁occur ▁from ▁selected ▁types ▁and ▁sources
+▁highlight ▁last ▁event ▁entry
+▁start ▁/ ▁stop ▁event ▁recording
+▁clear ▁event ▁log
+▁( ▁no ▁description ▁)
+▁description
+▁show
+▁_ ▁accessible
+▁perform ▁action
+▁acti ▁_ ▁on
+▁id
+▁toolkit
+▁version
+▁ap ▁_ ▁plication
+▁col ▁_ ▁lection
+▁0 ▁, ▁0
+▁relative ▁position
+▁size
+▁widget
+▁layer
+▁mdi ▁- ▁z ▁- ▁order
+▁alpha
+▁absolute ▁position
+▁co ▁_ ▁mponent
+▁des ▁_ ▁ktop
+▁locale ▁:
+▁_ ▁document
+▁hyperlink
+▁h ▁_ ▁ypertext
+▁position
+▁description
+▁locale
+▁_ ▁image
+▁lo ▁_ ▁gin ▁helper
+▁select ▁all
+▁_ ▁selection
+▁st ▁_ ▁reamable ▁content
+▁selected ▁columns
+▁selected ▁rows
+▁columns
+▁rows
+▁table ▁information
+▁name ▁( ▁x ▁, ▁y ▁)
+▁header ▁:
+▁extents ▁:
+▁row
+▁column
+▁selected ▁cell
+▁_ ▁table
+▁offset
+▁include ▁defaults
+▁te ▁_ ▁xt
+▁current ▁value
+▁minimum ▁increment
+▁maximum ▁value
+▁minimum ▁value
+▁val ▁_ ▁ue
+▁interface ▁viewer
+▁allows ▁viewing ▁of ▁various ▁interface ▁properties
+▁( ▁not ▁implemented ▁)
+▁name
+▁uri
+▁start
+▁end
+▁too ▁many ▁selectable ▁children
+▁quick ▁select
+▁plugin ▁with ▁various ▁methods ▁of ▁selecting ▁accessibles ▁quickly ▁.
+▁inspect ▁last ▁focused ▁accessible
+▁inspect ▁accessible ▁under ▁mouse
+▁native
+▁dogtail
+▁ldtp
+▁script ▁type
+▁script ▁recorder
+▁creates ▁dogtail ▁style ▁scripts
+▁the ▁current ▁script ▁will ▁be ▁lost ▁.
+▁confirm ▁clear
+▁sche ▁_ ▁ma ▁:
+▁v ▁_ ▁alidate
+▁idle
+▁no ▁description
+▁at ▁- ▁spi ▁validator
+▁validates ▁application ▁accessibility
+▁level
+▁role
+▁saving
+▁validating
+▁except
+▁error
+▁warn
+▁info
+▁debug
+▁basic
+▁tests ▁fundamental ▁gui ▁application ▁accessibility
+▁actionable ▁% ▁s ▁is ▁not ▁focusable ▁or ▁selectable
+▁interactive ▁% ▁s ▁is ▁not ▁actionable
+▁more ▁than ▁one ▁focused ▁widget
+▁% ▁s ▁has ▁no ▁text ▁interface
+▁% ▁s ▁index ▁in ▁parent ▁does ▁not ▁match ▁child ▁index
+▁missing ▁reciprocal ▁for ▁% ▁s ▁relation
+▁% ▁s ▁missing ▁name ▁or ▁label
+▁focusable ▁% ▁s ▁has ▁table ▁interface ▁, ▁no ▁selection ▁interface
+▁% ▁s ▁has ▁% ▁s ▁state ▁without ▁% ▁s ▁state
+▁% ▁s ▁does ▁not ▁belong ▁to ▁a ▁set
+▁% ▁( ▁rolename ▁) ▁s ▁index ▁% ▁( ▁num ▁) ▁d ▁does ▁not ▁match ▁row ▁and ▁column
+▁% ▁( ▁rolename ▁) ▁s ▁parent ▁index ▁% ▁( ▁num 1 ▁) ▁d ▁does ▁not ▁match ▁row ▁and ▁column ▁index ▁% ▁( ▁num 2 ▁) ▁d
+▁% ▁s ▁has ▁no ▁name ▁or ▁description
+▁_ ▁preferences ▁...
+▁_ ▁contents
+▁accerciser ▁could ▁not ▁see ▁the ▁applications ▁on ▁your ▁desktop ▁. ▁you ▁must ▁enable ▁desktop ▁accessibility ▁to ▁fix ▁this ▁problem ▁. ▁do ▁you ▁want ▁to ▁enable ▁it ▁now ▁ ?
+▁note ▁: ▁changes ▁only ▁take ▁effect ▁after ▁logout ▁.
+▁children
+▁_ ▁refresh ▁registry
+▁refresh ▁all
+▁refresh ▁_ ▁node
+▁refresh ▁selected ▁node ▁& apos ; ▁s ▁children
+▁component
+▁task
+▁key
+▁alt
+▁ctrl
+▁shift
+▁top ▁panel
+▁bottom ▁panel
+▁accerciser ▁preferences
+▁plugins
+▁global ▁hotkeys
+▁highlighting
+▁highlight ▁duration ▁:
+▁border ▁color ▁:
+▁the ▁border ▁color ▁of ▁the ▁highlight ▁box
+▁fill ▁color ▁:
+▁the ▁fill ▁color ▁of ▁the ▁highlight ▁box
+▁translator ▁- ▁credits
+▁an ▁interactive ▁python ▁accessibility ▁explorer
+▁accerciser ▁copyright ▁ © ▁2006 ▁, ▁2007 ▁ibm ▁corporation ▁( ▁bsd ▁)
+▁the ▁new ▁bsd ▁license ▁see ▁the ▁copying ▁and ▁notice ▁files ▁for ▁details ▁.
+▁web ▁site
+▁_ ▁add ▁bookmark ▁...
+▁bookmark ▁selected ▁accessible ▁.
+▁_ ▁edit ▁bookmarks ▁...
+▁manage ▁bookmarks ▁.
+▁edit ▁bookmarks ▁...
+▁title
+▁application
+▁path
+▁add ▁bookmark ▁...
+▁title ▁:
+▁application ▁:
+▁path ▁:
+▁plugin ▁errors
+▁view
+▁no ▁view
+▁_ ▁single ▁plugins ▁view
+▁plugin ▁view
+▁plugin ▁view ▁( ▁% ▁d ▁)
+▁_ ▁new ▁view ▁...
+▁new ▁view ▁...
+▁_ ▁file
+▁_ ▁edit
+▁_ ▁bookmarks
+▁_ ▁view
+▁_ ▁help
+▁full ▁name
+▁key ▁binding
+▁content ▁type
+▁give ▁your ▁application ▁an ▁accessibility ▁workout
+▁accerciser ▁accessibility ▁explorer
+▁the ▁default ▁plugin ▁layout ▁for ▁the ▁bottom ▁panel
+▁the ▁default ▁plugin ▁layout ▁for ▁the ▁top ▁panel
+▁a ▁list ▁of ▁plugins ▁that ▁are ▁disabled ▁by ▁default
+▁highlight ▁duration
+▁the ▁duration ▁of ▁the ▁highlight ▁box ▁when ▁selecting ▁accessible ▁nodes
+▁highlight ▁border ▁color
+▁the ▁color ▁and ▁opacity ▁of ▁the ▁highlight ▁border ▁.
+▁highlight ▁fill ▁color
+▁the ▁color ▁and ▁opacity ▁of ▁the ▁highlight ▁fill ▁.
+▁api ▁browser
+▁browse ▁the ▁various ▁methods ▁of ▁the ▁current ▁accessible
+▁hide ▁private ▁attributes
+▁method
+▁property
+▁value
+▁ipython ▁console
+▁interactive ▁console ▁for ▁manipulating ▁currently ▁selected ▁accessible
+▁event ▁monitor
+▁_ ▁monitor ▁events
+▁c ▁_ ▁lear ▁selection
+▁everything
+▁selected ▁application
+▁selected ▁accessible
+▁source
+▁event ▁monitor
+▁shows ▁events ▁as ▁they ▁occur ▁from ▁selected ▁types ▁and ▁sources
+▁highlight ▁last ▁event ▁entry
+▁start ▁/ ▁stop ▁event ▁recording
+▁clear ▁event ▁log
+▁( ▁no ▁description ▁)
+▁description
+▁show
+▁_ ▁accessible
+▁perform ▁action
+▁acti ▁_ ▁on
+▁id
+▁toolkit
+▁version
+▁ap ▁_ ▁plication
+▁col ▁_ ▁lection
+▁0 ▁, ▁0
+▁relative ▁position
+▁size
+▁widget
+▁layer
+▁mdi ▁- ▁z ▁- ▁order
+▁alpha
+▁absolute ▁position
+▁co ▁_ ▁mponent
+▁des ▁_ ▁ktop
+▁locale ▁:
+▁_ ▁document
+▁hyperlink
+▁h ▁_ ▁ypertext
+▁position
+▁description
+▁locale
+▁_ ▁image
+▁lo ▁_ ▁gin ▁helper
+▁select ▁all
+▁_ ▁selection
+▁st ▁_ ▁reamable ▁content
+▁selected ▁columns
+▁selected ▁rows
+▁columns
+▁rows
+▁table ▁information
+▁name ▁( ▁x ▁, ▁y ▁)
+▁header ▁:
+▁extents ▁:
+▁row
+▁column
+▁selected ▁cell
+▁_ ▁table
+▁offset
+▁include ▁defaults
+▁te ▁_ ▁xt
+▁current ▁value
+▁minimum ▁increment
+▁maximum ▁value
+▁minimum ▁value
+▁val ▁_ ▁ue
+▁interface ▁viewer
+▁allows ▁viewing ▁of ▁various ▁interface ▁properties
+▁( ▁not ▁implemented ▁)
+▁name
+▁uri
+▁start
+▁end
+▁too ▁many ▁selectable ▁children
+▁quick ▁select
+▁plugin ▁with ▁various ▁methods ▁of ▁selecting ▁accessibles ▁quickly ▁.
+▁inspect ▁last ▁focused ▁accessible
+▁inspect ▁accessible ▁under ▁mouse
+▁native
+▁dogtail
+▁ldtp
+▁script ▁type
+▁script ▁recorder
+▁creates ▁dogtail ▁style ▁scripts
+▁the ▁current ▁script ▁will ▁be ▁lost ▁.
+▁confirm ▁clear
+▁sche ▁_ ▁ma ▁:
+▁v ▁_ ▁alidate
+▁idle
+▁no ▁description
+▁at ▁- ▁spi ▁validator
+▁validates ▁application ▁accessibility
+▁level
+▁role
+▁saving
+▁validating
+▁except
+▁error
+▁warn
+▁info
+▁debug
+▁basic
+▁tests ▁fundamental ▁gui ▁application ▁accessibility
+▁actionable ▁% ▁s ▁is ▁not ▁focusable ▁or ▁selectable
+▁interactive ▁% ▁s ▁is ▁not ▁actionable
+▁more ▁than ▁one ▁focused ▁widget
+▁% ▁s ▁has ▁no ▁text ▁interface
+▁% ▁s ▁index ▁in ▁parent ▁does ▁not ▁match ▁child ▁index
+▁missing ▁reciprocal ▁for ▁% ▁s ▁relation
+▁% ▁s ▁missing ▁name ▁or ▁label
+▁focusable ▁% ▁s ▁has ▁table ▁interface ▁, ▁no ▁selection ▁interface
+▁% ▁s ▁has ▁% ▁s ▁state ▁without ▁% ▁s ▁state
+▁% ▁s ▁does ▁not ▁belong ▁to ▁a ▁set
+▁% ▁( ▁rolename ▁) ▁s ▁index ▁% ▁( ▁num ▁) ▁d ▁does ▁not ▁match ▁row ▁and ▁column
+▁% ▁( ▁rolename ▁) ▁s ▁parent ▁index ▁% ▁( ▁num 1 ▁) ▁d ▁does ▁not ▁match ▁row ▁and ▁column ▁index ▁% ▁( ▁num 2 ▁) ▁d
+▁% ▁s ▁has ▁no ▁name ▁or ▁description
+▁_ ▁preferences ▁...
+▁_ ▁contents
+▁accerciser ▁could ▁not ▁see ▁the ▁applications ▁on ▁your ▁desktop ▁. ▁you ▁must ▁enable ▁desktop ▁accessibility ▁to ▁fix ▁this ▁problem ▁. ▁do ▁you ▁want ▁to ▁enable ▁it ▁now ▁ ?
+▁note ▁: ▁changes ▁only ▁take ▁effect ▁after ▁logout ▁.
+▁children
+▁_ ▁refresh ▁registry
+▁refresh ▁all
+▁refresh ▁_ ▁node
+▁refresh ▁selected ▁node ▁& apos ; ▁s ▁children
+▁component
+▁task
+▁key
+▁alt
+▁ctrl
+▁shift
+▁top ▁panel
+▁bottom ▁panel
+▁accerciser ▁preferences
+▁plugins
+▁global ▁hotkeys
+▁highlighting
+▁highlight ▁duration ▁:
+▁border ▁color ▁:
+▁the ▁border ▁color ▁of ▁the ▁highlight ▁box
+▁fill ▁color ▁:
+▁the ▁fill ▁color ▁of ▁the ▁highlight ▁box
+▁translator ▁- ▁credits
+▁an ▁interactive ▁python ▁accessibility ▁explorer
+▁accerciser ▁copyright ▁ © ▁2006 ▁, ▁2007 ▁ibm ▁corporation ▁( ▁bsd ▁)
+▁the ▁new ▁bsd ▁license ▁see ▁the ▁copying ▁and ▁notice ▁files ▁for ▁details ▁.
+▁web ▁site
+▁_ ▁add ▁bookmark ▁...
+▁bookmark ▁selected ▁accessible ▁.
+▁_ ▁edit ▁bookmarks ▁...
+▁manage ▁bookmarks ▁.
+▁edit ▁bookmarks ▁...
+▁title
+▁application
+▁path
+▁add ▁bookmark ▁...
+▁title ▁:
+▁application ▁:
+▁path ▁:
+▁plugin ▁errors
+▁view
+▁no ▁view
+▁_ ▁single ▁plugins ▁view
+▁plugin ▁view
+▁plugin ▁view ▁( ▁% ▁d ▁)
+▁_ ▁new ▁view ▁...
+▁new ▁view ▁...
+▁_ ▁file
+▁_ ▁edit
+▁_ ▁bookmarks
+▁_ ▁view
+▁_ ▁help
+▁full ▁name
+▁key ▁binding
+▁content ▁type
+▁accerciser
+▁give ▁your ▁application ▁an ▁accessibility ▁workout
+▁accerciser ▁accessibility ▁explorer
+▁a ▁list ▁of ▁plugins ▁that ▁are ▁disabled ▁by ▁default
+▁a ▁list ▁of ▁plugins ▁that ▁are ▁disabled ▁by ▁default ▁.
+▁highlight ▁duration
+▁the ▁duration ▁of ▁the ▁highlight ▁box ▁when ▁selecting ▁accessible ▁nodes ▁.
+▁highlight ▁fill ▁color
+▁the ▁color ▁and ▁opacity ▁of ▁the ▁highlight ▁fill ▁.
+▁highlight ▁border ▁color
+▁the ▁color ▁and ▁opacity ▁of ▁the ▁highlight ▁border ▁.
+▁the ▁layout ▁for ▁the ▁bottom ▁panel
+▁the ▁layout ▁for ▁the ▁bottom ▁panel ▁pluginview ▁.
+▁the ▁layout ▁for ▁the ▁top ▁panel
+▁the ▁layout ▁for ▁the ▁top ▁panel ▁pluginview ▁.
+▁single ▁layout ▁view
+▁available ▁new ▁pluginviews
+▁the ▁default ▁plugin ▁layout ▁for ▁the ▁top ▁panel ▁.
+▁api ▁browser
+▁browse ▁the ▁various ▁methods ▁of ▁the ▁current ▁accessible
+▁hide ▁private ▁attributes
+▁method
+▁property
+▁value
+▁ipython ▁console
+▁interactive ▁console ▁for ▁manipulating ▁currently ▁selected ▁accessible
+▁event ▁monitor
+▁_ ▁monitor ▁events
+▁c ▁_ ▁lear ▁selection
+▁everything
+▁selected ▁application
+▁selected ▁accessible
+▁source
+▁event ▁monitor
+▁shows ▁events ▁as ▁they ▁occur ▁from ▁selected ▁types ▁and ▁sources
+▁highlight ▁last ▁event ▁entry
+▁start ▁/ ▁stop ▁event ▁recording
+▁clear ▁event ▁log
+▁child ▁count
+▁description
+▁states
+▁attributes
+▁show
+▁relations
+▁_ ▁accessible
+▁perform ▁action
+▁acti ▁_ ▁on
+▁id
+▁toolkit
+▁version
+▁ap ▁_ ▁plication
+▁col ▁_ ▁lection
+▁0 ▁, ▁0
+▁relative ▁position
+▁size
+▁widget
+▁layer
+▁mdi ▁- ▁z ▁- ▁order
+▁alpha
+▁absolute ▁position
+▁co ▁_ ▁mponent
+▁des ▁_ ▁ktop
+▁locale ▁:
+▁_ ▁document
+▁hyperlink
+▁h ▁_ ▁ypertext
+▁position
+▁locale
+▁_ ▁image
+▁lo ▁_ ▁gin ▁helper
+▁select ▁all
+▁_ ▁selection
+▁st ▁_ ▁reamable ▁content
+▁caption ▁:
+▁summary ▁:
+▁selected ▁columns
+▁selected ▁rows
+▁columns
+▁rows
+▁table ▁information
+▁name ▁( ▁x ▁, ▁y ▁)
+▁header ▁:
+▁extents ▁:
+▁row
+▁column
+▁selected ▁cell
+▁_ ▁table
+▁offset
+▁include ▁defaults
+▁start ▁: ▁0
+▁end ▁: ▁0
+▁te ▁_ ▁xt
+▁current ▁value
+▁minimum ▁increment
+▁maximum ▁value
+▁minimum ▁value
+▁val ▁_ ▁ue
+▁unknown
+▁interface ▁viewer
+▁allows ▁viewing ▁of ▁various ▁interface ▁properties
+▁( ▁not ▁implemented ▁)
+▁name
+▁uri
+▁start
+▁end
+▁too ▁many ▁selectable ▁children
+▁( ▁editable ▁)
+▁start ▁: ▁% ▁d
+▁quick ▁select
+▁plugin ▁with ▁various ▁methods ▁of ▁selecting ▁accessibles ▁quickly ▁.
+▁inspect ▁last ▁focused ▁accessible
+▁inspect ▁accessible ▁under ▁mouse
+▁sche ▁_ ▁ma ▁:
+▁v ▁_ ▁alidate

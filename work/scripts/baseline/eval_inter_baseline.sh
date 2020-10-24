@@ -9,11 +9,11 @@ set -e
 #Source test file should be tokenized and BPEd so that it can match the vocabulary of the model. Reference file should be detokenized and de-BPEd for explicitly calculating sacreBLEU (without using internal --sacrebleu)
 #removebpe=sentencepiece should only be used if BPE was used with sentencepiece.
 
-SRC_LNG=gu
+SRC_LNG=en
 TGT_LNG=hi
 LANG_PAIR=$SRC_LNG-$TGT_LNG
 
-HOME_DIR=/fs/bil0/atanwar
+HOME_DIR=/fs/bil0/atanwar/repo/nmt-transfer-learning-xlm-r
 WORK_DIR=$HOME_DIR/work
 PACKAGES_DIR=$HOME_DIR/packages
 

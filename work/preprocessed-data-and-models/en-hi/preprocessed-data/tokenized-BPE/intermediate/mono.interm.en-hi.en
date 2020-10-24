@@ -1,0 +1,500 @@
+Give your application an accessibility workout
+Accerciser Accessibility Explorer
+The default plugin layout for the bottom panel
+The default plugin layout for the top panel
+A list of plugins that are disabled by default
+Highlight duration
+The duration of the highlight box when selecting accessible nodes
+Highlight border color
+The color and opacity of the highlight border.
+Highlight fill color
+The color and opacity of the highlight fill.
+API Browser
+Browse the various methods of the current accessible
+Hide private attributes
+Method
+Property
+Value
+IPython Console
+Interactive console for manipulating currently selected accessible
+Event monitor
+_ Monitor Events
+C _ lear Selection
+Everything
+Selected application
+Selected accessible
+Source
+Event Monitor
+Shows events as they occur from selected types and sources
+Highlight last event entry
+Start / stop event recording
+Clear event log
+(no description)
+Description
+Show
+_ Accessible
+Perform action
+Acti _ on
+ID
+Toolkit
+Version
+Ap _ plication
+Col _ lection
+0, 0
+Relative position
+Size
+WIDGET
+Layer
+MDI - Z - order
+Alpha
+Absolute position
+Co _ mponent
+Des _ ktop
+Locale:
+_ Document
+Hyperlink
+H _ ypertext
+Position
+Description
+Locale
+_ Image
+Lo _ gin Helper
+Select All
+_ Selection
+St _ reamable Content
+Selected columns
+Selected rows
+Columns
+Rows
+Table Information
+name (x, y)
+Header:
+Extents:
+Row
+Column
+Selected Cell
+_ Table
+Offset
+Include defaults
+Te _ xt
+Current value
+Minimum increment
+Maximum value
+Minimum value
+Val _ ue
+Interface Viewer
+Allows viewing of various interface properties
+(not implemented)
+Name
+URI
+Start
+End
+Too many selectable children
+Quick Select
+Plugin with various methods of selecting accessibles quickly.
+Inspect last focused accessible
+Inspect accessible under mouse
+Native
+Dogtail
+LDTP
+Script Type
+Script Recorder
+Creates dogtail style scripts
+The current script will be lost.
+Confirm clear
+Sche _ ma:
+V _ alidate
+Idle
+No description
+AT - SPI Validator
+Validates application accessibility
+Level
+Role
+Saving
+Validating
+EXCEPT
+ERROR
+WARN
+INFO
+DEBUG
+Basic
+Tests fundamental GUI application accessibility
+actionable% s is not focusable or selectable
+interactive% s is not actionable
+more than one focused widget
+% s has no text interface
+% s index in parent does not match child index
+Missing reciprocal for% s relation
+% s missing name or label
+focusable% s has table interface, no selection interface
+% s has% s state without% s state
+% s does not belong to a set
+% (rolename) s index% (num) d does not match row and column
+% (rolename) s parent index% (num1) d does not match row and column index% (num2) d
+% s has no name or description
+_ Preferences...
+_ Contents
+Accerciser could not see the applications on your desktop. You must enable desktop accessibility to fix this problem. Do you want to enable it now?
+Note: Changes only take effect after logout.
+Children
+_ Refresh Registry
+Refresh all
+Refresh _ Node
+Refresh selected node 's children
+Component
+Task
+Key
+Alt
+Ctrl
+Shift
+Top panel
+Bottom panel
+accerciser Preferences
+Plugins
+Global Hotkeys
+Highlighting
+Highlight duration:
+Border color:
+The border color of the highlight box
+Fill color:
+The fill color of the highlight box
+translator - credits
+An interactive Python accessibility explorer
+accerciser Copyright © 2006, 2007 IBM Corporation (BSD)
+The New BSD License See the COPYING and NOTICE files for details.
+Web site
+_ Add Bookmark...
+Bookmark selected accessible.
+_ Edit Bookmarks...
+Manage bookmarks.
+Edit Bookmarks...
+Title
+Application
+Path
+Add Bookmark...
+Title:
+Application:
+Path:
+Plugin Errors
+View
+No view
+_ Single plugins view
+Plugin View
+Plugin View (% d)
+_ New view...
+New View...
+_ File
+_ Edit
+_ Bookmarks
+_ View
+_ Help
+Full name
+Key binding
+Content type
+Give your application an accessibility workout
+Accerciser Accessibility Explorer
+The default plugin layout for the bottom panel
+The default plugin layout for the top panel
+A list of plugins that are disabled by default
+Highlight duration
+The duration of the highlight box when selecting accessible nodes
+Highlight border color
+The color and opacity of the highlight border.
+Highlight fill color
+The color and opacity of the highlight fill.
+API Browser
+Browse the various methods of the current accessible
+Hide private attributes
+Method
+Property
+Value
+IPython Console
+Interactive console for manipulating currently selected accessible
+Event monitor
+_ Monitor Events
+C _ lear Selection
+Everything
+Selected application
+Selected accessible
+Source
+Event Monitor
+Shows events as they occur from selected types and sources
+Highlight last event entry
+Start / stop event recording
+Clear event log
+(no description)
+Description
+Show
+_ Accessible
+Perform action
+Acti _ on
+ID
+Toolkit
+Version
+Ap _ plication
+Col _ lection
+0, 0
+Relative position
+Size
+WIDGET
+Layer
+MDI - Z - order
+Alpha
+Absolute position
+Co _ mponent
+Des _ ktop
+Locale:
+_ Document
+Hyperlink
+H _ ypertext
+Position
+Description
+Locale
+_ Image
+Lo _ gin Helper
+Select All
+_ Selection
+St _ reamable Content
+Selected columns
+Selected rows
+Columns
+Rows
+Table Information
+name (x, y)
+Header:
+Extents:
+Row
+Column
+Selected Cell
+_ Table
+Offset
+Include defaults
+Te _ xt
+Current value
+Minimum increment
+Maximum value
+Minimum value
+Val _ ue
+Interface Viewer
+Allows viewing of various interface properties
+(not implemented)
+Name
+URI
+Start
+End
+Too many selectable children
+Quick Select
+Plugin with various methods of selecting accessibles quickly.
+Inspect last focused accessible
+Inspect accessible under mouse
+Native
+Dogtail
+LDTP
+Script Type
+Script Recorder
+Creates dogtail style scripts
+The current script will be lost.
+Confirm clear
+Sche _ ma:
+V _ alidate
+Idle
+No description
+AT - SPI Validator
+Validates application accessibility
+Level
+Role
+Saving
+Validating
+EXCEPT
+ERROR
+WARN
+INFO
+DEBUG
+Basic
+Tests fundamental GUI application accessibility
+actionable% s is not focusable or selectable
+interactive% s is not actionable
+more than one focused widget
+% s has no text interface
+% s index in parent does not match child index
+Missing reciprocal for% s relation
+% s missing name or label
+focusable% s has table interface, no selection interface
+% s has% s state without% s state
+% s does not belong to a set
+% (rolename) s index% (num) d does not match row and column
+% (rolename) s parent index% (num1) d does not match row and column index% (num2) d
+% s has no name or description
+_ Preferences...
+_ Contents
+Accerciser could not see the applications on your desktop. You must enable desktop accessibility to fix this problem. Do you want to enable it now?
+Note: Changes only take effect after logout.
+Children
+_ Refresh Registry
+Refresh all
+Refresh _ Node
+Refresh selected node 's children
+Component
+Task
+Key
+Alt
+Ctrl
+Shift
+Top panel
+Bottom panel
+accerciser Preferences
+Plugins
+Global Hotkeys
+Highlighting
+Highlight duration:
+Border color:
+The border color of the highlight box
+Fill color:
+The fill color of the highlight box
+translator - credits
+An interactive Python accessibility explorer
+accerciser Copyright © 2006, 2007 IBM Corporation (BSD)
+The New BSD License See the COPYING and NOTICE files for details.
+Web site
+_ Add Bookmark...
+Bookmark selected accessible.
+_ Edit Bookmarks...
+Manage bookmarks.
+Edit Bookmarks...
+Title
+Application
+Path
+Add Bookmark...
+Title:
+Application:
+Path:
+Plugin Errors
+View
+No view
+_ Single plugins view
+Plugin View
+Plugin View (% d)
+_ New view...
+New View...
+_ File
+_ Edit
+_ Bookmarks
+_ View
+_ Help
+Full name
+Key binding
+Content type
+Accerciser
+Give your application an accessibility workout
+Accerciser Accessibility Explorer
+A list of plugins that are disabled by default
+A list of plugins that are disabled by default.
+Highlight duration
+The duration of the highlight box when selecting accessible nodes.
+Highlight fill color
+The color and opacity of the highlight fill.
+Highlight border color
+The color and opacity of the highlight border.
+The layout for the bottom panel
+The layout for the bottom panel pluginview.
+The layout for the top panel
+The layout for the top panel pluginview.
+Single layout view
+Available new pluginviews
+The default plugin layout for the top panel.
+API Browser
+Browse the various methods of the current accessible
+Hide private attributes
+Method
+Property
+Value
+IPython Console
+Interactive console for manipulating currently selected accessible
+Event monitor
+_ Monitor Events
+C _ lear Selection
+Everything
+Selected application
+Selected accessible
+Source
+Event Monitor
+Shows events as they occur from selected types and sources
+Highlight last event entry
+Start / stop event recording
+Clear event log
+Child count
+Description
+States
+Attributes
+Show
+Relations
+_ Accessible
+Perform action
+Acti _ on
+ID
+Toolkit
+Version
+Ap _ plication
+Col _ lection
+0, 0
+Relative position
+Size
+WIDGET
+Layer
+MDI - Z - order
+Alpha
+Absolute position
+Co _ mponent
+Des _ ktop
+Locale:
+_ Document
+Hyperlink
+H _ ypertext
+Position
+Locale
+_ Image
+Lo _ gin Helper
+Select All
+_ Selection
+St _ reamable Content
+Caption:
+Summary:
+Selected columns
+Selected rows
+Columns
+Rows
+Table Information
+name (x, y)
+Header:
+Extents:
+Row
+Column
+Selected Cell
+_ Table
+Offset
+Include defaults
+Start: 0
+End: 0
+Te _ xt
+Current value
+Minimum increment
+Maximum value
+Minimum value
+Val _ ue
+unknown
+Interface Viewer
+Allows viewing of various interface properties
+(not implemented)
+Name
+URI
+Start
+End
+Too many selectable children
+(Editable)
+Start:% d
+Quick Select
+Plugin with various methods of selecting accessibles quickly.
+Inspect last focused accessible
+Inspect accessible under mouse
+Sche _ ma:
+V _ alidate

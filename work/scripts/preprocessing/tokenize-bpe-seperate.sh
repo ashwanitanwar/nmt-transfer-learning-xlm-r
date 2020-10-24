@@ -3,11 +3,11 @@ set -e
 
 #This script will normalize and tokenize the data with IndicNLP/Moses/Sentencepiece. Then, it will segment to BPE using Sentencepiece. 
 
-SRC_LNG=gu
+SRC_LNG=en
 TGT_LNG=hi
 LANG_PAIR=$SRC_LNG-$TGT_LNG
 
-HOME_DIR=/fs/bil0/atanwar
+HOME_DIR=/fs/bil0/atanwar/repo/nmt-transfer-learning-xlm-r
 WORK_DIR=$HOME_DIR/work
 PACKAGES_DIR=$HOME_DIR/packages
 
@@ -107,22 +107,22 @@ clean_norm_tok() {
 
 #Switch on monolingual data if required
 
-clean_norm_tok indic-nlp $RAW_TRAIN_SOURCE $INTERM_TRAIN_SOURCE $SRC_LNG
+#clean_norm_tok indic-nlp $RAW_TRAIN_SOURCE $INTERM_TRAIN_SOURCE $SRC_LNG
 clean_norm_tok indic-nlp $RAW_TRAIN_TARGET $INTERM_TRAIN_TARGET $TGT_LNG
-clean_norm_tok indic-nlp $RAW_VAL_SOURCE $INTERM_VAL_SOURCE $SRC_LNG
+#clean_norm_tok indic-nlp $RAW_VAL_SOURCE $INTERM_VAL_SOURCE $SRC_LNG
 clean_norm_tok indic-nlp $RAW_VAL_TARGET $INTERM_VAL_TARGET $TGT_LNG
-clean_norm_tok indic-nlp $RAW_TEST_SOURCE $INTERM_TEST_SOURCE $SRC_LNG
+#clean_norm_tok indic-nlp $RAW_TEST_SOURCE $INTERM_TEST_SOURCE $SRC_LNG
 clean_norm_tok indic-nlp $RAW_TEST_TARGET $INTERM_TEST_TARGET $TGT_LNG
-clean_norm_tok indic-nlp $RAW_MONO_SOURCE $INTERM_MONO_SOURCE $SRC_LNG
+#clean_norm_tok indic-nlp $RAW_MONO_SOURCE $INTERM_MONO_SOURCE $SRC_LNG
 clean_norm_tok indic-nlp $RAW_MONO_TARGET $INTERM_MONO_TARGET $TGT_LNG
 
-#clean_norm_tok moses $RAW_TRAIN_SOURCE $INTERM_TRAIN_SOURCE $SRC_LNG
+clean_norm_tok moses $RAW_TRAIN_SOURCE $INTERM_TRAIN_SOURCE $SRC_LNG
 #clean_norm_tok moses $RAW_TRAIN_TARGET $INTERM_TRAIN_TARGET $TGT_LNG
-#clean_norm_tok moses $RAW_VAL_SOURCE $INTERM_VAL_SOURCE $SRC_LNG
+clean_norm_tok moses $RAW_VAL_SOURCE $INTERM_VAL_SOURCE $SRC_LNG
 #clean_norm_tok moses $RAW_VAL_TARGET $INTERM_VAL_TARGET $TGT_LNG
-#clean_norm_tok moses $RAW_TEST_SOURCE $INTERM_TEST_SOURCE $SRC_LNG
+clean_norm_tok moses $RAW_TEST_SOURCE $INTERM_TEST_SOURCE $SRC_LNG
 #clean_norm_tok moses $RAW_TEST_TARGET $INTERM_TEST_TARGET $TGT_LNG
-#clean_norm_tok moses $RAW_MONO_SOURCE $INTERM_MONO_SOURCE $SRC_LNG
+clean_norm_tok moses $RAW_MONO_SOURCE $INTERM_MONO_SOURCE $SRC_LNG
 #clean_norm_tok moses $RAW_MONO_TARGET $INTERM_MONO_TARGET $TGT_LNG
 
 #################BPE Processing#########################
@@ -163,10 +163,10 @@ fi
 # $INTERMEDIATE_DIR/mono-train.shuf.shared 
 
 #learn spm and produce codes
-VOCAB_SIZE_SRC=16000
+VOCAB_SIZE_SRC=1000
 CHAR_COV_SRC=0.9995
 
-VOCAB_SIZE_TGT=16000
+VOCAB_SIZE_TGT=1000
 CHAR_COV_TGT=0.9995
 
 #SPM train src

@@ -1,11 +1,11 @@
-export CUDA_VISIBLE_DEVICES=5,6
+export CUDA_VISIBLE_DEVICES=6
 set -x
 set -e
 
-HOME_DIR=/fs/bil0/atanwar
+HOME_DIR=/fs/bil0/atanwar/repo/nmt-transfer-learning-xlm-r
 WORK_DIR=$HOME_DIR/work
 
-SRC_LNG=gu
+SRC_LNG=en
 TGT_LNG=hi
 LANG_PAIR=$SRC_LNG-$TGT_LNG
 
