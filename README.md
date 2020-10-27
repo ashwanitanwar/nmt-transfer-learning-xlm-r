@@ -91,7 +91,7 @@ This repository presents the work done during my master's thesis with the title 
    ### 5.1 Training XLM-R-fused NMT system
    - Train the XLM-R-fused systems with [this script](work/scripts/xlm-r-fused/train_xlm_r_fused.sh) which will use the system at [this location](work/systems/xlm-r-fused).
    - *BERT_NAME* stores the path to the XLM-R variant used with this system. We can use either pre-trained or finetuned variants here.
-   - This script copies the best checkpoint from the baseline system and restores the parameters for the further training with the XLM-R-fused system.
+   - This script copies the best checkpoint from the baseline system and restores the parameters for further training with the XLM-R-fused system.
    - This system was built over an earlier version of Fairseq which did not provide early stopping, so this script saves all the checkpoints for *--max-update* training steps, which are then evaluated later on.
    - For attention fusion at both the encoder and decoder side, use the *--arch* as *transformer_s2_iwslt_de_en* , while for the decoder-only fusion, use *transformer_iwslt_de_en*. 
    - Ensure to use a small learning rate, as the parameters are already near the optimum levels.
@@ -99,7 +99,7 @@ This repository presents the work done during my master's thesis with the title 
    - Evaluate the XLM-R-fused systems with [this script](work/scripts/xlm-r-fused/eval_inter_xlm_r_fused.sh), which is similar to the script used for the baseline system.
    - This script uses a particular checkpoint to compute BLEU score, while [another script](work/scripts/xlm-r-fused/eval_all_checkpoints_xlm_r_fused.sh) extends it to compute the scores for all the checkpoints. 
    - Like it was mentioned before, there is no early stopping feature with this system. So, we saved all the checkpoints every few epochs and evaluated them with a validation set. Then, the best checkpoint can be set using BEST_CHECKPOINT in the former script for the test set evaluation. 
-   - It uses path to two different test files which are used by different components of the XLM-R-fused NMT systems. *TEST_SRC_BPEd* points to the file which is used by the standard NMT-encoder, while *TEST_SRC_RAW* points to the raw source file which is used by the XLM-R component. The raw file is needed by the XLM-R as it uses its own internal tokenization using the tokenizer provided by the HuggingFace Transformers library. Ensure that *BERT_NAME* points to the corresponding XLM-R variant directory, so that it can access its corresponding tokenizer.
+   - It uses the paths to two different test files which are used by different components of the XLM-R-fused NMT systems. *TEST_SRC_BPEd* points to the file which is used by the standard NMT-encoder, while *TEST_SRC_RAW* points to the raw source file which is used by the XLM-R component. The raw file is needed by the XLM-R as it uses its own internal tokenization using the tokenizer provided by the HuggingFace Transformers library. Ensure that *BERT_NAME* points to the corresponding XLM-R variant directory, so that it can access its corresponding tokenizer.
 ## <a name="6"></a>6. Finetuning XLM-R
    ### 6.1 Multilingual and Monolingual Variants
    - We finetuned the XLM-R models to create the multilingual and monolingual variants of the original pre-trained models.    
@@ -111,7 +111,7 @@ This repository presents the work done during my master's thesis with the title 
    - Use [this script](work/scripts/finetune_xlm_r/prepare-bert-data-xlm-r.sh) to prepare the data. It prepares the training and validation files for a single monolingual dataset whose path is set using *RAW_MONO_SOURCE*. Then, it is preprocessed using the Indic NLP library, as done for the training files above. 
    - In this script, *BERT_NAME* points to the original pretrained XLM-R model which is used to access its dictionary.
    - Then, it is binarised using another variant of the Fairseq library available [here](work/systems/XLM-R-binariser/). It uses the XLM-R tokenizer, which ensures that our data is tokenized in the same way as the original data was done for pretraining the XLM-R.
-   - (Optional) If you want to finetune any other masked language model, the you need to import that language model in [this file](/work/systems/XLM-R-binariser/fairseq/fairseq/binarizer.py). Make the following changes:
+   - (Optional) If you want to finetune any other masked language model, then you need to import that language model in [this file](/work/systems/XLM-R-binariser/fairseq/fairseq/binarizer.py). Make the following changes:
       - Import the corresponding tokenizer instead of our default XLMRobertaTokenizer
 		```
 		from transformers import XLMRobertaTokenizer
@@ -128,7 +128,7 @@ This repository presents the work done during my master's thesis with the title 
    - It uses the same baseline NMT system which is used in Step 4.1 to finetune the model. Here, *RESTORE_POINT* points to the pre-trained model checkpoint. Use the *--task* as *masked_lm* for the monolingual variant. 
    - Similalrly, use [this script](work/scripts/finetune_xlm_r/train-custom-bert-xlm-r_indo-aryan.sh) to create the multilingual variant. It uses the *--task* as *multilingual_masked_lm* which merges the data from different languages.
    - It also resamples it to minimise the impact of data imbalance where larger datasets overpower the smaller ones. Use *--multilang-sampling-alpha* to adjust the sampling ratio. See the original XLM-R paper [[1]](#ref1) for the details. 
-   - We saved the checkpoints at regular intervals, and picked the model with the minimum validation loss.
+   - We saved the checkpoints at regular intervals and picked the model with the minimum validation loss.
    ### 6.4 Making PyTorch Checkpoint Compatible with HuggingFace Transformers
    - We need to convert the saved PyTorch checkpoint to a different version compatible with the HuggingFace Transformers library. 
    - We assume that you have installed the Transformers library in the packages directory. Then, use the following command.
@@ -138,7 +138,7 @@ This repository presents the work done during my master's thesis with the title 
    - Here, *best_ck_dir* contains the finetuned XLM-R checkpoint named as *model.pt*, *dict.txt* and *sentencepiece.bpe.model*. Latter 2 files are the same for both the pre-trained and finetuned models, which can be [accessed here](https://github.com/pytorch/fairseq/tree/master/examples/xlmr). *pytorch_dump_folder_path* refers to the directory where the Transformers compatible PyTorch version needs to be saved.
    - Note that the Transformers library had some issues with the file *convert_roberta_original_pytorch_checkpoint_to_pytorch.py*, which we fixed and added to the [utils directory](work/utils). Replace this file and rebuild the library. 
    - (Optional) We can use the HuggingFace guides directly to finetune the model without first using the Fairseq library. We found this approach extremely slow due to poor multi-GPU support provided by the HuggingFace. They implemented multithreading over multiprocessing which causes imbalanced GPU usage. Fairseq implemented their own module to handle this, which is discussed [here](https://github.com/pytorch/fairseq/issues/34).
-   - After finetuning, just use the final pytorch version to replace the original pre-trained models for training and evaluating the XLM-R-fused systems.
+   - After finetuning, just use the final PyTorch version to replace the original pre-trained models for training and evaluating the XLM-R-fused systems.
 ## <a name="7"></a>7. Script Conversion
    - We used some script conversion strategies, where we tried to exploit the lexical similarities between the related languages by using a common script. We used the Indic NLP library to convert the same. 
    - As the XLM-R-fused system processes the same input sentences in the XLM-R, as well as, the NMT-encoder, we tried different combinations of the scripts for these modules. For example, for the Gujarati-Hindi pair, we passed Gujarati script sentences to the XLM-R module, but Gujarati in the Devanagari script to the NMT-encoder to maximize the lexical overlap with the target language.
@@ -162,7 +162,7 @@ Please get familiar with the work of [[3]](#ref3), whose code is available [here
    - Use the above binarsied data to extract the attention maps from the XLM-R-fused system using the [evaluation script](work/scripts/syntactic-analysis/eval_inter_bert_fused_xlm_r_syntax.sh). Similarly, use [this script](work/scripts/syntactic-analysis/eval_inter_baseline_syntax.sh) to extract the maps from the baseline system.
    - These scripts use two different systems built over the baseline NMT system and XLM-R-fused NMT system, which can be accessed [here](work/systems/baseline-NMT-extract-attn/fairseq/) and [here](work/systems/xlm-r-fused-extract-attn/bert-nmt/), respectively.
    - These systems extract the self-attention maps for all the attention heads present in all the Transformer encoder layers. Further, the system built over the XLM-R-fused also extracts the bert-attention maps resulting from the attention-based fusion of the XLM-R representations and the NMT-encoder representations. 
-   - Use the additional paramter *--save_attn_maps* to give the path to save the attention maps. Create the folders -- *self*, *bert*, and *batch_sentences* inside it to store the respective maps. *batch_sentences* stores the corresponding sentences in the order the attention maps are extracted. This file can be used to verify the order of the sentences processed. 
+   - Use the additional parameter *--save_attn_maps* to give the path to save the attention maps. Create the folders -- *self*, *bert*, and *batch_sentences* inside it to store the respective maps. *batch_sentences* stores the corresponding sentences in the order the attention maps are extracted. This file can be used to verify the order of the sentences processed. 
   - These maps will be saved in the numpy arrays where a single file contains the number of sentences same as the batch size.
   - Use [this script](work/scripts/syntactic-analysis/extract_attention_and_save_pkl.sh) to further process the attention maps.
   - It creates the pickle objects using the attention maps and the JSON files.  
@@ -175,7 +175,7 @@ Please get familiar with the work of [[3]](#ref3), whose code is available [here
   - Finally, it gives a final UAS score by training and evaluating the attention based probing classifier. It takes a weighted combination of the self-attention weights given by all the layers and
 attention heads to give an overall measure of the syntactic knowledge.
 ## <a name="9"></a>9. Additional Info
-- Licenses: Please note that our work is licensed under the MIT License. But, we use some other works and datasets which have their own licenses. Specifically, all the systems which are based on the Fairseq library have their corresponding licenses present in their respective directories. Further, please check the licenses for the English-Hindi IIT Bombay parallel dataset and the Hindi Universal Dependencies dataset by using the given links in the Readme file. Similarly, check the license for the HuggingFace Transformers library, as we modified one of its file as mentioned in the Readme.  
+- Licenses: Please note that our work is licensed under the MIT License. But, we use some other works and datasets which have their own licenses. Specifically, all the systems which are based on the Fairseq library have their corresponding licenses present in their respective directories. Further, please check the licenses for the English-Hindi IIT Bombay parallel dataset and the Hindi Universal Dependencies dataset by using the given links in the Readme file. Similarly, check the license for the HuggingFace Transformers library, as we modified one of its files as mentioned in the Readme.  
 - Raise an issue if you need any help. If you find this work useful, feel free to use it and please cite my thesis as well.
 ## <a name="10"></a>10. References
 <a id="ref1">[1]</a> [Conneau, Alexis, et al. "Unsupervised Cross-Lingual Representation Learning At Scale." arXiv preprint arXiv:1911.02116 (2019)](https://arxiv.org/pdf/1911.02116.pdf)
